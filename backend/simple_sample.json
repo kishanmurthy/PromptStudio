@@ -1,0 +1,40 @@
+{
+	"flow_name": "job description",
+	"version": 1,
+	"input": {
+		"{{JD}}": "Interstate Gas Supply (IGS Energy) seeks Data Scientist, Enterprise Analytics. Position based in Dublin, OH, but remote work within the U.S. will also be considered.\n\nContinuously improve processes and decision-making through data. Using a statistics or mathematics background, the Data Scientist will wrangle with cross-sectional and time series data,\n\napply statistical tests to test hypotheses, and bring data science workloads to production through version control, continuous deployment, modular coding and software development best\n\npractices. The Data Scientist will develop and scale models in a cloud-based, big data environment (Azure/Databricks/Snowflake) and will use Python/PySpark, SQL languages.\n\nSpecifically, job duties include:\nWork closely with stakeholders, end-users, and business analysts to understand requirements and scope project\nAnalyze various data to understand relationships, integrity and how data can be leveraged\nDevelop proof of concept solutions (model development, validation) and work closely with data engineering team to scale solutions, automate quality assurance and monitor accuracy\nMaintain and develop quality standards for data assets within pipeline\nProactively partner and field requests from business partners for prospective, in-flight, and future ML pipelines\n\nRequires: Master’s degree in Mathematics, Statistics, or Data Science.\n\nSalary range is $77,000-$129,000 per year.\n\nTo apply, visit https://igsenergy.wd1.myworkdayjobs.com/IGS, or send resume to: Matthew Straley, IGS Energy, 6100 Emerald Parkway, Dublin, OH 43016\n\nOur Offer to You:\nComprehensive healthcare benefits including medical, dental, vision, and employer health savings account contributions\n401(k) retirement plan with company matching\nTuition reimbursement, employee wellness programs, and other perks and discounts\nPaid leave policies\nAnd more, such as paid time off, flexible spending, employer paid life and disability, employee assistance program, and domestic partner benefits\n\nEqual Opportunity Employment:\n\nIt is the policy of IGS Energy to ensure equal employment opportunity in accordance with all applicable federal and state regulations and guidelines. Employment discrimination against employees and applicants due to race, color, religion, sex (including sexual harassment), national origin, disability, age, sexual orientation, gender identity, military status, and veteran status or other legally protected class under applicable law is prohibited.\n"
+	},
+	"dag_data": [{
+			"id": 1,
+			"type": "input",
+			"label": "Node 1",
+			"output_tag": "{{JD}}"
+		},
+		{
+			"id": 2,
+			"type": "prompt",
+			"label": "Node 2",
+			"prompt": "Extract the software technical hard skills from the Job description specified by triple backticks and output the result using JSON format sepecified. \n \n    Job Description: ```{{JD}}``` \n ``output`` \n     Eg JSON Output format: ***{'skills':[]}*** \n The output must only contain JSON",
+			"output_tag": "{{prompt_output_node_3}}",
+			"output_format": "JSON"
+		},
+		{
+			"id": 3,
+			"type": "output",
+			"label": "Node 4"
+		},
+		{
+			"id": "e1-2",
+			"source": "1",
+			"target": "2",
+			"animated": true
+		},
+		{
+			"id": "e2-3",
+			"source": "2",
+			"target": "3",
+			"animated": true
+		}
+
+	]
+}
