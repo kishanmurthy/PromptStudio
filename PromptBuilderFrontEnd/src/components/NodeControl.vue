@@ -1,7 +1,7 @@
 <script setup>
 
 import { ref } from 'vue';
-import { Panel, PanelPosition, useVueFlow } from '@vue-flow/core'
+import { Panel, PanelPosition, Position, useVueFlow } from '@vue-flow/core'
 
 const inputTags = ref('')
 const inputCount = ref(0)
@@ -15,7 +15,9 @@ function addInput() {
   const newNode = {
     id: `input-node-${inputCount.value}`,
     label: `Input ${inputCount.value}`,
+    type: "input",
     position: { x: 100, y: Math.random() * dimensions.value.height },
+    sourcePosition: Position.Right,
   }
 
   addNodes([newNode])
@@ -27,20 +29,22 @@ function addPrompt() {
   const newNode = {
     id: `prompt-node-${promptCount.value}`,
     label: `Prompt ${promptCount.value}`,
+    type: "default",
     position: { x: 450, y: Math.random() * dimensions.value.height },
+    sourcePosition: Position.Right,
+    targetPosition: Position.Left,
   }
 
   addNodes([newNode])
 }
 
-function addEdge() {
-}
-
 function addOutput() {
-    const outputNode = { 
+    const outputNode = {
         id: 'output-node', 
         label: 'Output',
+        type: "output",
         position: { x: 800, y: Math.random() * dimensions.value.height }, 
+        targetPosition: Position.Left,
     }
     addNodes([outputNode])
 }
@@ -56,10 +60,6 @@ function addOutput() {
     <button class="button-node" @click="addPrompt">
         <font-awesome-icon :icon="['fas', 'plus']" size="lg"/>
         <span>Prompt</span>
-    </button>
-    <button class="button-node" @click="addEdge">
-        <font-awesome-icon :icon="['fas', 'plus']" size="lg"/>
-        <span>Edge</span>
     </button>
     <button class="button-node" @click="addOutput">
         <font-awesome-icon :icon="['fas', 'plus']" size="lg"/>

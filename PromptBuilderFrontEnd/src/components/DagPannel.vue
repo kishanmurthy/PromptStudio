@@ -16,6 +16,9 @@ const inputTags = ref([{text:''}])
 const Prompts = ref([])
 const Outputs = ref([])
 const elements = ref([])
+const { onConnect, addEdges } = useVueFlow()
+
+onConnect((params) => addEdges(params))
 
 </script>
 
