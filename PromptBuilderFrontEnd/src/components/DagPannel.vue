@@ -9,24 +9,13 @@ import { ref } from 'vue'
 import Begin from './Begin.vue'
 import Prompt from './Prompt.vue'
 import Run from './Run.vue'
-import { defaultDag } from './assets/default-dag.js'
+import NodeControl from './NodeControl.vue'
 
 const state = ref('begin')
-
 const inputTags = ref([{text:''}])
-
 const Prompts = ref([])
-
 const Outputs = ref([])
-
-
-const { onConnect, addEdges } = useVueFlow()
-
-const elements = ref(defaultDag)
-
-onConnect((params) => addEdges(params))
-
-
+const elements = ref([])
 
 </script>
 
@@ -38,11 +27,10 @@ onConnect((params) => addEdges(params))
             v-model="elements"
             class="basicflow"
             :default-edge-options="{ type: 'smoothstep' }"
-            :default-viewport="{ zoom: 1.4 }"
             :min-zoom="0.2"
             :max-zoom="4"
-            fit-view-on-init
           >
+            <NodeControl/>
             <Background pattern-color="#aaa" gap="8" />
             <MiniMap />
             <Controls />
@@ -66,8 +54,8 @@ onConnect((params) => addEdges(params))
 
 
 <style scoped>
-/* these are necessary styles for vue flow */
-.dag-panel {
-        height: 90vh;
-    }
+  /* these are necessary styles for vue flow */
+  .dag-panel {
+    height: 90vh;
+  }
 </style>
