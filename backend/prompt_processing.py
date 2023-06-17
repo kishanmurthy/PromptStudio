@@ -29,6 +29,6 @@ def prompt_process(node_input, node_dict, tp_sort):
             for node_incoming in node.node_incomings:
                 all_output_dict[node_dict[node_incoming].node_output_tag] = input_dicts[node_dict[node_incoming].node_output_tag]
 
-    return all_output_dict
+    return all_output_dict, input_dicts
 
         

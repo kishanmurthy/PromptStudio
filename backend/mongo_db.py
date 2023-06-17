@@ -13,9 +13,9 @@ mycollection.create_index(
 	unique = True
 )
 
-async def save_or_update(json_data):
+def save_or_update(json_data):
 	data = mycollection.find_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]})
 	if data is None:
 		mycollection.insert_one(json_data)
 	else:
-		mycollection.update_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]}, json_data)
+		mycollection.replace_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]}, json_data, True)

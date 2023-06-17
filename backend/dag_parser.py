@@ -1,7 +1,7 @@
 import json
 
 def read_sample_json():
-	f = open('simple_sample.json')
+	f = open('sample.json')
 	data = json.load(f)
 	return data
 
@@ -43,12 +43,10 @@ def topological_sort(node_dict):
 
 def process_prompt_nodes(node_dict):
 	tp_sort = topological_sort(node_dict)
-	print(tp_sort)
 	return tp_sort
 	
 def create_dag_object(dag_arch):
 	node_dict = {}
-	# json_data = read_sample_json()
 	json_data = dag_arch
 	for obj in json_data["dag_data"]:
 		# its edge to process 
@@ -71,4 +69,3 @@ def create_dag_object(dag_arch):
 	tp_sort = process_prompt_nodes(node_dict)
 	return node_dict, tp_sort
 
-# create_dag_object()

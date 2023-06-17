@@ -17,9 +17,9 @@ def application_start():
     return "Hello"
 
 @app.route('/save', methods=["POST"])
-async def save_dag():
+def save_dag():
 	dag_arch = request.get_json()
-	asyncio.create_task(save_or_update(dag_arch))
+	save_or_update(dag_arch)
 	return jsonify({'statusCode':200})
 
 @app.route('/test', methods=["POST"])
@@ -28,8 +28,17 @@ def test_dag():
     save_or_update(dag_arch)
     node_dict, tp_sort = create_dag_object(dag_arch)
     node_input = dag_arch["input"]
-    output_dict = prompt_process(node_input, node_dict, tp_sort)
-    return json.dumps(output_dict)
+    output_dict, input_dicts = prompt_process(node_input, node_dict, tp_sort)
+    return json.dumps(input_dicts)
+
+@app.route('/download', methods=["POST"])
+def test_dag_ye():
+    dag_arch = request.get_json()
+    save_or_update(dag_arch)
+    node_dict, tp_sort = create_dag_object(dag_arch)
+    node_input = dag_arch["input"]
+    output_dict, input_dicts = prompt_process(node_input, node_dict, tp_sort)
+    return json.dumps(input_dicts)
 
 if __name__ == '__main__':
    app.run()
