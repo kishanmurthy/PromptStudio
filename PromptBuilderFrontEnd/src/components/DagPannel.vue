@@ -1,15 +1,17 @@
 <script setup>
 
-import { Background } from '@vue-flow/background'
-import { Controls } from '@vue-flow/controls'
-import '@vue-flow/controls/dist/style.css'
-import { VueFlow, useVueFlow } from '@vue-flow/core'
-import { MiniMap } from '@vue-flow/minimap'
-import { ref } from 'vue'
-import Begin from './Begin.vue'
-import Prompt from './Prompt.vue'
-import Run from './Run.vue'
-import NodeControl from './NodeControl.vue'
+import { Background } from '@vue-flow/background';
+import { Controls } from '@vue-flow/controls';
+import '@vue-flow/controls/dist/style.css';
+import { VueFlow, useVueFlow } from '@vue-flow/core';
+
+
+import { MiniMap } from '@vue-flow/minimap';
+import { ref } from 'vue';
+import Begin from './Begin.vue';
+import NodeControl from './NodeControl.vue';
+import Prompt from './Prompt.vue';
+import Run from './Run.vue';
 
 const state = ref('begin')
 const inputTags = ref([{text:''}])

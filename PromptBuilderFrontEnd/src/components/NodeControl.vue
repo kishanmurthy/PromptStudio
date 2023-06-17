@@ -1,8 +1,9 @@
 <script setup>
 
+import { Panel, PanelPosition, Position, useVueFlow } from '@vue-flow/core';
 import { ref } from 'vue';
-import { Panel, PanelPosition, Position, useVueFlow } from '@vue-flow/core'
 
+const emit = defineEmits(['createdNode'])
 const inputTags = ref('')
 const inputCount = ref(0)
 const promptCount = ref(0)
@@ -18,6 +19,12 @@ function addInput() {
     type: "input",
     position: { x: 100, y: Math.random() * dimensions.value.height },
     sourcePosition: Position.Right,
+    events: {
+      click: (node) => {
+        console.log('click', node)
+        emit('createdNode', inputCount.value)
+      }
+    }
   }
 
   addNodes([newNode])
