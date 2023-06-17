@@ -24,7 +24,6 @@ const deleteTag = (id) => {
 
 <template>
     <div class="container-fluid">
-    <h3>Begin</h3>
     <div class="row">
         <div class="col-md-10">
             <label>Input Tags</label>

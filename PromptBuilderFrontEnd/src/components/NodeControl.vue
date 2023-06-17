@@ -50,7 +50,7 @@ function addOutput() {
         id: 'output-node', 
         label: 'Output',
         type: "output",
-        position: { x: 800, y: Math.random() * dimensions.value.height }, 
+        position: { x: 800, y: 325 }, 
         targetPosition: Position.Left,
     }
     addNodes([outputNode])
