@@ -1,50 +1,57 @@
 <script setup>
-import { VueFlow } from '@vue-flow/core';
-// import { useVueFlow } from '@vue-flow/core'
-import { ref } from 'vue';
-// import { defaultDag } from './assets/default-dag.js'
+
+import { Background } from '@vue-flow/background'
+import { Controls } from '@vue-flow/controls'
+import '@vue-flow/controls/dist/style.css'
+import { VueFlow, useVueFlow } from '@vue-flow/core'
+import { MiniMap } from '@vue-flow/minimap'
+import { ref } from 'vue'
+import Begin from './Begin.vue'
+// import Prompt from './Prompt.vue'
+// import Run from './Run.vue'
+import { defaultDag } from './assets/default-dag.js'
 
 
+const { onConnect, addEdges } = useVueFlow()
 
+const elements = ref(defaultDag)
 
-// const { onConnect, addEdges } = useVueFlow()
-
-// const elements = ref(defaultDag)
-
-// onConnect((params) => addEdges(params))
-
-
-
-const elements = ref([
-  // Nodes
-  // An input node, specified by using `type: 'input'`
-  { id: '1', type: 'input', label: 'Node 1', position: { x: 250, y: 5 } },
-
-  // Default nodes, you can omit `type: 'default'`
-  { id: '2', label: 'Node 2', position: { x: 100, y: 100 }, },
-  { id: '3', label: 'Node 3', position: { x: 400, y: 100 } },
-
-  // An output node, specified by using `type: 'output'`
-  { id: '4', type: 'output', label: 'Node 4', position: { x: 400, y: 200 } },
-
-  // Edges
-  // Most basic edge, only consists of an id, source-id and target-id
-  { id: 'e1-3', source: '1', target: '3' },
-
-  // An animated edge
-  { id: 'e1-2', source: '1', target: '2', animated: true },
-])
+onConnect((params) => addEdges(params))
 
 </script>
 
 <template>
-
-<VueFlow v-model="elements" />
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 dag-panel">
+          <VueFlow
+            v-model="elements"
+            class="basicflow"
+            :default-edge-options="{ type: 'smoothstep' }"
+            :default-viewport="{ zoom: 1.4 }"
+            :min-zoom="0.2"
+            :max-zoom="4"
+            fit-view-on-init
+          >
+            <Background pattern-color="#aaa" gap="8" />
+            <MiniMap />
+            <Controls />
+          </VueFlow>
+      </div>
+      <div class="col-md-2">
+        <Begin />
+        <!-- <Prompt /> -->
+        <!-- <Run/> -->
+      </div>
+    </div>
+  </div>
 
 </template>
 
 
 <style scoped>
 /* these are necessary styles for vue flow */
-
+.dag-panel {
+        height: 90vh;
+    }
 </style>

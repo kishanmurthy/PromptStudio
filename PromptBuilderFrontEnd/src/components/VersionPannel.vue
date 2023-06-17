@@ -20,10 +20,10 @@
     @import '@vue-flow/core/dist/theme-default.css';
     .full-panel {
         display: block;
-        height: 1000px;
+        height: 100vh;
     }
 
     .dag-panel {
-        height: 100%;
+        height: 100vh;
     }
 </style>
