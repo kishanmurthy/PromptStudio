@@ -1,6 +1,6 @@
 
 <script setup>
-    import { Panel, useVueFlow } from '@vue-flow/core';
+    import { Panel, PanelPosition, useVueFlow } from '@vue-flow/core';
 
     const flowKey = 'example-flow'
 
