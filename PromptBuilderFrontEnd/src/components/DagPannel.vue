@@ -7,9 +7,17 @@ import { VueFlow, useVueFlow } from '@vue-flow/core'
 import { MiniMap } from '@vue-flow/minimap'
 import { ref } from 'vue'
 import Begin from './Begin.vue'
-// import Prompt from './Prompt.vue'
-// import Run from './Run.vue'
+import Prompt from './Prompt.vue'
+import Run from './Run.vue'
 import { defaultDag } from './assets/default-dag.js'
+
+const state = ref('begin')
+
+const inputTags = ref([{text:''}])
+
+const Prompts = ref([])
+
+const Outputs = ref([])
 
 
 const { onConnect, addEdges } = useVueFlow()
@@ -41,10 +49,15 @@ onConnect((params) => addEdges(params))
           </VueFlow>
       </div>
       <div class="col-md-2">
-
-        <Begin />
-        <!-- <Prompt /> -->
-        <!-- <Run/> -->
+        <template v-if="state=='begin'" >
+          <Begin :inputTags="inputTags"/>
+        </template>
+        <template v-if="state=='prompt'">
+            <Prompt />
+        </template>
+        <template v-if="state=='run'">
+            <Run/>
+        </template>
       </div>
     </div>
   </div>

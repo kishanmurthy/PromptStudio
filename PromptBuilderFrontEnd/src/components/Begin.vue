@@ -1,7 +1,15 @@
 <script setup>
 
-import { ref } from 'vue';
-const inputTags = ref([{ text: "" }])
+import { defineProps, ref } from 'vue';
+
+const props = defineProps({
+    inputTags: {
+        type: Array,
+        required: true
+    }
+})
+
+const inputTags = ref(props.inputTags );
 
 const addInput = ()=> {
       inputTags.value.push({text: ""});
