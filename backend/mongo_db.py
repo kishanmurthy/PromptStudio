@@ -1,5 +1,6 @@
 import pymongo
 import asyncio
+from bson.json_util import dumps
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
@@ -19,8 +20,7 @@ mycollection.create_index(
 
 front_end_collection.create_index(
 	[
-		("flow_name", 1),
-		("version", -1)
+		("DAGS.name", 1)
 	],
 	unique = True
 )
@@ -34,15 +34,18 @@ published_collection.create_index(
 )
 
 def save_or_update_frontend(json_data):
-	data = front_end_collection.find_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]})
+	data = front_end_collection.find_one({'name': json_data["DAGS"]["name"]})
 	if data is None:
 		front_end_collection.insert_one(json_data)
 	else:
-		front_end_collection.replace_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]}, json_data, True)
+		front_end_collection.replace_one({'name': json_data["DAGS"]["name"]}, json_data, True)
 
-def load_frontend(flow_name):
-	versions = front_end_collection.find({'flow_name': flow_name})
-	return versions
+def load_frontend():
+	versions = front_end_collection.find()
+	print(type(versions))
+	list_cur = list(versions)
+	json_data = dumps(list_cur)
+	return json_data
 
 def save_or_update(json_data):
 	data = mycollection.find_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]})

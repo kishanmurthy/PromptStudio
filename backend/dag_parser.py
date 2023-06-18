@@ -7,6 +7,7 @@ def read_sample_json():
 
 class Nodes:
 	def __init__(self, json_data):
+		print(json_data)
 		self.node_id = json_data["id"]
 		self.node_type = json_data["type"]
 		self.node_label = json_data["label"]
@@ -50,7 +51,7 @@ def create_dag_object(dag_arch):
 	json_data = dag_arch
 	for obj in json_data["dag_data"]:
 		# its edge to process 
-		if "e" in str(obj["id"]):
+		if "edge" in str(obj["id"]):
 			source = node_dict[obj["source"]]
 			target = node_dict[obj["target"]]
 
