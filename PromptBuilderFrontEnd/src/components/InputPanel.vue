@@ -5,6 +5,7 @@ import { defineEmits, defineProps, onUpdated, ref, watch } from 'vue';
 const emit = defineEmits(['update:input_name','update:input_tag'])
 const props = defineProps({
     input_name: String,
+    node_id: String,
     input_tag:  String,
 })
 

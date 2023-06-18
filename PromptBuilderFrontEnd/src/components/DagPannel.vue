@@ -58,12 +58,12 @@ const { onConnect, addEdges } = useVueFlow()
 
 onConnect((params) => addEdges(params))
 
-const addNodePanel = (panel_type, name, value) => {
+const addNodePanel = (panel_type, name, value,node_id) => {
   console.log(panel_type,value)
   if (panel_type == 'input')
-    inputPanels.value.push({'name':name, 'text':''})
+    inputPanels.value.push({'name':name, 'node_id':node_id, 'text':''})
   else if (panel_type == 'prompt')
-    promptPanels.value.push({'name':name, 'prompt_value':'', 'output_tag': '', 'output_format': 'JSON'})
+    promptPanels.value.push({'name':name,  'node_id':node_id, 'prompt_value':'', 'output_tag': '', 'output_format': 'JSON'})
     
   state.value = panel_type
   tag_id.value = value - 1
@@ -129,7 +129,9 @@ watch(elements, (newValue) => {
       <div class="col-md-2">
         <template v-if="state=='input'" >
           <!-- <Begin :inputTags="inputTags"/> -->
-          <InputPanel :input_name="inputPanels[tag_id].name" 
+          <InputPanel 
+          :node_id="inputPanels[tag_id].node_id" 
+          :input_name="inputPanels[tag_id].name"
           :input_tag="inputPanels[tag_id].input_tag"
           @update:input_name="(new_value)=>{inputPanels[tag_id].name = new_value}"
           @update:input_tag="(new_value)=>{inputPanels[tag_id].input_tag = new_value}"
@@ -138,6 +140,7 @@ watch(elements, (newValue) => {
         </template>
         <template v-if="state=='prompt'">
             <Prompt
+            :node_id="promptPanels[tag_id].node_id" 
             :prompt_name = "promptPanels[tag_id].name" 
             :prompt_value = "promptPanels[tag_id].prompt_value"
             :output_tag = "promptPanels[tag_id].output_tag"

@@ -5,6 +5,7 @@ import { defineProps, onUpdated, ref, watch } from 'vue';
 const emit = defineEmits(['update:prompt_name','update:prompt_value','update:output_tag','update:output_format'])
 
 const props = defineProps({
+    nodeId: String,
     prompt_name: String,
     prompt_value: String,
     output_tag: String,
