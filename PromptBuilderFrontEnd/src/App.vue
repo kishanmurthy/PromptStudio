@@ -129,7 +129,7 @@ import VersionPannel from './components/VersionPannel.vue';
 
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row top-panel">
       <div class="col-md-8">
         <h3>Prompt Builder</h3>
       </div>
@@ -158,8 +158,10 @@ import VersionPannel from './components/VersionPannel.vue';
     />
     <div v-if="showModal" class="modal">
       <div class="modal-content">
-        <span class="close" @click="()=>{showModal=false}">&times;</span>
-
+        <div style="display:inline-flex">
+          <h3 class="col-md-11">Run Dialog</h3>
+          <span class="close col-md-1" @click="()=>{showModal=false}">&times;</span>
+        </div>
         <label>Input Tags</label>
         <div class="container">
           <div class="row">
@@ -174,7 +176,7 @@ import VersionPannel from './components/VersionPannel.vue';
             
             <div class="row">
               <div class="col-md-1">
-                <button style="width=100px" @click="onRunModal">Run  </button>
+                <button style="border:1px solid #ccc; border-radius: 5px; padding: 5px 7.5px; background: #CBCBCB" @click="onRunModal">Run</button>
               </div>
               <template v-if="run_processing">
                 <font-awesome-icon  class="col-md-1" :icon="['fas', 'spinner']" size="lg" spin style="padding:5px; margin-top: 10px;"/>
@@ -223,11 +225,13 @@ import VersionPannel from './components/VersionPannel.vue';
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #E0E0E0;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: min-content;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 .close {
@@ -244,6 +248,15 @@ import VersionPannel from './components/VersionPannel.vue';
 
 .icon-top-bar {
   cursor: pointer;
+  margin-top: 10px;
 }
 
+textarea {
+  min-height: 250px !important;
+  width: 250px;
+}
+
+.top-panel {
+        background: #D0D0D0;
+}
 </style>
