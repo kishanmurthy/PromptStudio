@@ -28,7 +28,7 @@ function addInput() {
     }
   }
 
-  emit('addNodePanel', 'input', 'Input '+ inputCount.toString(),inputCount)
+  emit('addNodePanel', 'input', 'Input '+ inputCount.toString(),inputCount,'input-node-'+ inputCount.toString())
   addNodes([newNode])
 }
 
@@ -50,7 +50,7 @@ function addPrompt() {
       }
     }
   }
-  emit('addNodePanel', 'prompt', 'Prompt '+ promptCount.toString(),promptCount)
+  emit('addNodePanel', 'prompt', 'Prompt '+ promptCount.toString(),promptCount,`prompt-node-${promptCount}`)
   addNodes([newNode])
 }
 
