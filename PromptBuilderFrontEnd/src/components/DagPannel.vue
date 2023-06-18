@@ -7,20 +7,53 @@ import { VueFlow, useVueFlow } from '@vue-flow/core';
 
 
 import { MiniMap } from '@vue-flow/minimap';
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import InputPanel from './InputPanel.vue';
 import NodeControl from './NodeControl.vue';
 import Prompt from './Prompt.vue';
 import Run from './Run.vue';
 
-const state = ref('')
+import { defineEmits, defineProps } from 'vue';
+// const props = defineProps({
+//    DAG: {
+//     type: Object,
+//     required: true,
+//   },
+// });
+// name':`Verson ${count}`, 'inputPanels':[], 'promptPanels':[], 'elements'
 
+const props = defineProps({
+  dagName: {
+    type: String,
+    required: true,
+  },
+  inputPanels: {
+    type: Array,
+    required: true,
+  },
+  promptPanels : {
+    type: Array,
+    required: true,
+  },
+  elements : {
+    type: Array,
+    required: true,
+  },
+});
+
+const emits = defineEmits(['update:dagName', 'update:inputPanels', 'update:promptPanels', 'update:elements'])
+
+
+
+
+const state = ref('')
+const tag_id = ref(0)
+
+const dagName = ref(props.dagName)
 const inputPanels = ref([])
 const promptPanels = ref([])
-
-const tag_id = ref(0)
-const Outputs = ref([])
 const elements = ref([])
+
 const { onConnect, addEdges } = useVueFlow()
 
 onConnect((params) => addEdges(params))
@@ -43,6 +76,36 @@ const clickNode = (panel_type, value) => {
   tag_id.value = value - 1
   console.log(inputPanels.value[tag_id.value])
 }
+
+onMounted(() => {
+  dagName.value = props.dagName
+  inputPanels.value = props.inputPanels
+  promptPanels.value = props.promptPanels
+  elements.value = props.elements
+})
+
+// onUpdated(() => {
+//   dagName.value = props.dagName
+//   inputPanels.value = props.inputPanels
+//   promptPanels.value = props.promptPanels
+//   elements.value = props.elements
+// })
+
+watch(dagName, (newValue) => {
+  emits('update:dagName', newValue);
+});
+
+watch(inputPanels, (newValue) => {
+  emits('update:inputPanels', newValue);
+});
+
+watch(promptPanels, (newValue) => {
+  emits('update:promptPanels', newValue);
+});
+
+watch(elements, (newValue) => {
+  emits('update:elements', newValue);
+});
 
 </script>
 
