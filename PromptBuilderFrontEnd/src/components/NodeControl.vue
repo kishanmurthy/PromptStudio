@@ -18,7 +18,7 @@ function addInput() {
     number_id: inputCount,
     label: 'Input '+ inputCount.toString(),
     type: "input",
-    position: { x: 100, y: Math.random() * dimensions.value.height },
+    position: { x: 75, y: inputCount*100 },
     sourcePosition: Position.Right,
     events: {
       click: (event) => {
@@ -40,7 +40,7 @@ function addPrompt() {
     number_id: promptCount,
     label: `Prompt ${promptCount}`,
     type: "default",
-    position: { x: 450, y: Math.random() * dimensions.value.height },
+    position: { x: 425, y: promptCount*150 },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     events: {
@@ -59,7 +59,7 @@ function addOutput() {
         id: 'output-node', 
         label: 'Output',
         type: "output",
-        position: { x: 800, y: 325 }, 
+        position: { x: 750, y: 300 }, 
         targetPosition: Position.Left,
     }
     addNodes([outputNode])

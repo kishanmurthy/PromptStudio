@@ -166,4 +166,8 @@ import VersionPannel from './components/VersionPannel.vue';
   color: black;
 }
 
+.icon-top-bar {
+  cursor: pointer;
+}
+
 </style>

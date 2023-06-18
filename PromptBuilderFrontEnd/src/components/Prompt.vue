@@ -67,7 +67,7 @@ select {
 }
 
 textarea {
-  font-size: 10px;
+  font-size: 12px;
   height: 250px !important;
   width: 100%;
 }
