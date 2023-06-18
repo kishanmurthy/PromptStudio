@@ -18,7 +18,7 @@ function addInput() {
     number_id: inputCount,
     label: 'Input '+ inputCount.toString(),
     type: "input",
-    position: { x: 75, y: inputCount*100 },
+    position: { x: 75, y: 550-inputCount*100 },
     sourcePosition: Position.Right,
     events: {
       click: (event) => {
@@ -40,7 +40,7 @@ function addPrompt() {
     number_id: promptCount,
     label: `Prompt ${promptCount}`,
     type: "default",
-    position: { x: 425, y: promptCount*150 },
+    position: { x: 425, y: 550-promptCount*150 },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     events: {

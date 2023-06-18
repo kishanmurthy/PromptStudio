@@ -128,8 +128,10 @@ import VersionPannel from './components/VersionPannel.vue';
     />
     <div v-if="showModal" class="modal">
       <div class="modal-content">
-        <span class="close" @click="()=>{showModal=false}">&times;</span>
-
+        <div style="display:inline-flex">
+          <h3 class="col-md-11">Run Dialog</h3>
+          <span class="close col-md-1" @click="()=>{showModal=false}">&times;</span>
+        </div>
         <label>Input Tags</label>
         <div class="container">
           <div class="row">
@@ -143,7 +145,7 @@ import VersionPannel from './components/VersionPannel.vue';
             </template>
             
             <div>
-              <button @click="onRunModal">Run</button>
+              <button style="border:1px solid #ccc; border-radius: 5px; padding: 5px 7.5px;" @click="onRunModal">Run</button>
             </div>
             <template v-if="run_complete">
               <div class="col-md-1">
@@ -180,7 +182,7 @@ import VersionPannel from './components/VersionPannel.vue';
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: min-content;
 }
 
 .close {
@@ -197,6 +199,11 @@ import VersionPannel from './components/VersionPannel.vue';
 
 .icon-top-bar {
   cursor: pointer;
+}
+
+textarea {
+  min-height: 250px !important;
+  width: 250px;
 }
 
 </style>

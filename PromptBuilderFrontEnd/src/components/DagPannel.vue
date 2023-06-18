@@ -122,7 +122,6 @@ watch(elements, (newValue) => {
           >      
             <NodeControl @add-node-panel="addNodePanel" @click-node="clickNode"/>
             <Background pattern-color="#aaa" gap="8" />
-            <MiniMap />
             <Controls />
           </VueFlow>
       </div>
