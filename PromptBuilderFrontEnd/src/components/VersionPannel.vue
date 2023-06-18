@@ -1,15 +1,79 @@
 <script setup>
     import DagPannel from './DagPannel.vue';
+
+    import { defineEmits, defineProps, onMounted, onUpdated, ref, watch } from 'vue';
+
+    const emit = defineEmits(['update:DAGS', 'update:selectedDAG'])
+    
+
+    const props = defineProps({
+        DAGS: {
+            type: Array,
+            required: true
+        },
+        selectedDAG: {
+            type: Number,
+            required: false
+        }
+    })
+
+    const DAGS = ref([])
+
+    const selectedDAG = ref(0)
+    var count = 0
+    
+    const add_flow = () => {
+        count+=1
+        DAGS.value.push({'name':`Verson ${count}`, 'inputPanels':[], 'promptPanels':[], 'elements':[]})
+    }
+
+    onMounted(() => {
+        DAGS.value = props.DAGS
+        selectedDAG.value = props.selectedDAG
+    })
+
+    onUpdated(() => {
+        DAGS.value = props.DAGS
+        selectedDAG.value = props.selectedDAG
+    }),
+
+    watch(DAGS, () => {
+        emit('update:DAGS', DAGS.value)
+    })
+
+    watch(selectedDAG, () => {
+        emit('update:selectedDAG', selectedDAG.value)
+    })
+
 </script>
 
 <template>
     <div class="container-fluid">
         <div class="row full-panel">
             <div class="col-md-1">
-                <button>Add Flow</button>
+                <button @click="add_flow">Add Flow</button>
+                    <template v-for="(DAG,index) in DAGS">
+                        <button class="version-list" @click="selectedDAG=index">
+                            {{DAG.name}}
+                        </button>
+                    </template>
             </div>
             <div class="col-md-11">
-                <DagPannel class="dag-panel"/>
+                <template v-for="(DAG,index) in DAGS">
+
+                    <template v-if="index==selectedDAG">
+                        <DagPannel class="dag-panel" 
+                        :dagName="DAG.name" 
+                        :inputPanels="DAG.inputPanels" 
+                        :promptPanels="DAG.promptPanels" 
+                        :elements="DAG.elements" 
+                        @update-dag-name="(new_value)=>{DAGS[index].dagName = new_value}"
+                        @update:inputPanels="(new_value)=>{DAGS[index].inputPanels = new_value}"
+                        @update:promptPanels="(new_value)=>{DAGS[index].promptPanels = new_value}"
+                        @update:elements="(new_value)=>{DAGS[index].elements = new_value}"
+                       />
+                    </template>
+                </template> 
             </div>
         </div>
     </div>
@@ -25,5 +89,9 @@
 
     .dag-panel {
         height: 100vh;
+    }
+    .version-list {
+        cursor: pointer;
+        width: 100%;
     }
 </style>
