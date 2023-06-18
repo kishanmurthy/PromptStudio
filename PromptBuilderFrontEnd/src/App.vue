@@ -29,9 +29,6 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2">
-        <h4>Placeholder Text</h4>
-      </div>
     </div>
     <VersionPannel 
       :DAGS="DAGS"
