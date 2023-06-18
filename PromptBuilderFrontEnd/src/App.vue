@@ -7,6 +7,10 @@ import VersionPannel from './components/VersionPannel.vue';
   const selectedDAG = ref(0)
 
   const showModal = ref(false)
+  const modal_input_text = ref('')
+  const run_output_text = ref('')
+  var run_complete = ref('false')
+
 
   const onSave = () => {
     console.log('save')
@@ -27,16 +31,38 @@ import VersionPannel from './components/VersionPannel.vue';
     console.log('download')
   }
 
-  const onRun = () => {
-    console.log('run')
+  const onRunModal = () => {
+    console.log('run modal')
+
+    var run_data = {
+      'DAGS':DAGS.value[selectedDAG.value],
+      'input_text':modal_input_text.value,
+    }
+    console.log(JSON.stringify(run_data))
+    fetch('/run', {
+      method: 'POST',
+      body: JSON.stringify(run_data),
+      headers: {
+      'Content-Type': 'application/json'
+      }
+  })
+  .then(response => response.json())
+  .catch(error => console.error(error));        
   }
+  
+  
 
   const onUpload = () => {
     console.log('upload')
   }
 
 
-  
+  const onRun = ()=>{
+    modal_input_text.value = Array(DAGS.value[selectedDAG.value].inputPanels.length).fill('')
+    showModal.value=true
+    run_output_text.value = ''
+    run_complete.value = false
+  }
 
 
 
@@ -57,7 +83,7 @@ import VersionPannel from './components/VersionPannel.vue';
             <font-awesome-icon class="icon-top-bar" :icon="['fas', 'download']" size="lg" />
           </div>
           <div class="col-md-3">
-            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'play']" size="lg"  @click="()=>{showModal=False}"/>
+            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'play']" size="lg"  @click="onRun"/>
           </div>
           <div class="col-md-3">
             <font-awesome-icon class="icon-top-bar" :icon="['fas', 'upload']" size="lg" />
@@ -73,9 +99,34 @@ import VersionPannel from './components/VersionPannel.vue';
     />
     <div v-if="showModal" class="modal">
       <div class="modal-content">
-        <span class="close" @click="()=>{showModal=False}">&times;</span>
-        <h2>Modal Title</h2>
-        <p>Modal content goes here.</p>
+        <span class="close" @click="()=>{showModal=false}">&times;</span>
+
+        <label>Input Tags</label>
+        <div class="container">
+          <div class="row">
+            <template v-for="(panel, index)  in DAGS[selectedDAG].inputPanels" :key=index>
+              <div class="col-md-1">
+                <label>{{ panel.input_tag }}</label>
+              </div>
+              <div class="col-md-11">
+                <textarea v-model="modal_input_text[index]"></textarea>
+              </div>
+            </template>
+            
+            <div>
+              <button @click="onRunModal">Run</button>
+            </div>
+            <template v-if="run_complete">
+              <div class="col-md-1">
+                <label>Output</label>
+              </div>
+              <div class="col-md-11">
+                <textarea v-model="run_output_text"></textarea>
+              </div>
+            </template>
+        </div>
+
+        </div>
       </div>
     </div>
   </div>
