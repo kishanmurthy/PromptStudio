@@ -58,7 +58,7 @@
                         </li>
                     </template>
                 </ul>
-                <button class="button-node" @click="add_flow">
+                <button class="button-node new-flow" @click="add_flow">
                     <font-awesome-icon :icon="['fas', 'plus']" size="lg"/>
                     <span>New Flow</span>
                 </button>
@@ -101,5 +101,8 @@
     li {
         padding: 5px 0;
         cursor: pointer;
+    }
+    .new-flow {
+        background: #CBCBCB !important;
     }
 </style>

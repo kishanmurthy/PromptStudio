@@ -116,13 +116,13 @@ watch(elements, (newValue) => {
           <VueFlow
             v-model="elements"
             class="basicflow"
+            :style="{ background: '#EAEAEA' }"
             :default-edge-options="{ type: 'smoothstep' }"
             :min-zoom="0.2"
             :max-zoom="4"
-          >      
+          >
             <NodeControl @add-node-panel="addNodePanel" @click-node="clickNode"/>
             <Background pattern-color="#aaa" gap="8" />
-            <Controls />
           </VueFlow>
       </div>
       <div class="col-md-2">

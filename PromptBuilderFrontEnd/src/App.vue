@@ -99,7 +99,7 @@ import VersionPannel from './components/VersionPannel.vue';
 
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row top-panel">
       <div class="col-md-8">
         <h3>Prompt Builder</h3>
       </div>
@@ -145,7 +145,7 @@ import VersionPannel from './components/VersionPannel.vue';
             </template>
             
             <div>
-              <button style="border:1px solid #ccc; border-radius: 5px; padding: 5px 7.5px;" @click="onRunModal">Run</button>
+              <button style="border:1px solid #ccc; border-radius: 5px; padding: 5px 7.5px; background: #CBCBCB" @click="onRunModal">Run</button>
             </div>
             <template v-if="run_complete">
               <div class="col-md-1">
@@ -178,7 +178,7 @@ import VersionPannel from './components/VersionPannel.vue';
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #E0E0E0;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -201,6 +201,7 @@ import VersionPannel from './components/VersionPannel.vue';
 
 .icon-top-bar {
   cursor: pointer;
+  margin-top: 10px;
 }
 
 textarea {
@@ -208,4 +209,7 @@ textarea {
   width: 250px;
 }
 
+.top-panel {
+        background: #D0D0D0;
+}
 </style>
