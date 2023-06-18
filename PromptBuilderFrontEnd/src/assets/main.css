@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
 body {
     background-color: #E0E0E0 !important;
+    font-family: 'IBM Plex Mono' !important;
 }
 
 textarea, input, select {

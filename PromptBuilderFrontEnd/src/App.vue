@@ -131,7 +131,7 @@ import VersionPannel from './components/VersionPannel.vue';
   <div class="container-fluid">
     <div class="row top-panel">
       <div class="col-md-8">
-        <h3>Prompt Builder</h3>
+        <h3>Prompt Studio</h3>
       </div>
       <div class="col-md-2">
         <div class="row">

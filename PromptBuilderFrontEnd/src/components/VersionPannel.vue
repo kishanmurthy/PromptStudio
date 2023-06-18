@@ -51,7 +51,7 @@
 <template>
     <div class="container-fluid">
         <div class="row full-panel">
-            <div class="col-md-2">
+            <div class="col-md-2" style="padding:20px 0; width: 14.5%;">
                 <ul type="square">
                     <template v-for="(DAG,index) in DAGS">
                         <li class="version-list" @click="selectedDAG=index">
@@ -64,7 +64,7 @@
                     <span>New Flow</span>
                 </button>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10" style="padding:0">
                 <template v-for="(DAG,index) in DAGS">
 
                     <template v-if="index==selectedDAG">
@@ -105,5 +105,6 @@
     }
     .new-flow {
         background: #CBCBCB !important;
+        margin-left: 10px;
     }
 </style>
