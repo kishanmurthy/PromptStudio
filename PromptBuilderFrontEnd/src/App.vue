@@ -107,12 +107,28 @@ import VersionPannel from './components/VersionPannel.vue';
 
     fetch(url+'/download', {
       method: 'POST',
-      body: JSON.stringify(download_data),
       headers: {
       'Content-Type': 'application/json'
-      }
-  })
-  .then(response => response.json())
+      },
+      body: JSON.stringify(download_data),
+      redirect: 'follow'
+  }).then(response => response.blob())
+    .then(blob => {
+      // Create a temporary <a> element to initiate the download
+      const a = document.createElement('a');
+      a.href = window.URL.createObjectURL(blob);
+      a.download = 'PythonCode.py';
+      a.style.display = 'none';
+
+      // Append the <a> element to the document
+      document.body.appendChild(a);
+
+      // Trigger the download
+      a.click();
+
+      // Clean up the temporary <a> element
+      document.body.removeChild(a);
+    })
   .catch(error => console.error(error));        
 
 
