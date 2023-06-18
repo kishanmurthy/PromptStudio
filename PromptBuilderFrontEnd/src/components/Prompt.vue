@@ -43,10 +43,10 @@ watch(outputFormat, (newValue) => {
 </script>
 
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:-40px">
     <h3>{{promptName }}</h3>
     <label>Prompt</label>
-    <input type="textarea" v-model="promptTag" />
+    <textarea v-model="promptTag"/>
     <label>Output Tag Name</label>
     <input type="text" v-model="outputTag" />
     <label>Output Format</label>    
@@ -56,7 +56,6 @@ watch(outputFormat, (newValue) => {
         <option>Text</option>
     </select>
 
-    
     </div>
 </template>
 
@@ -64,6 +63,12 @@ watch(outputFormat, (newValue) => {
 <style scoped>
 select {
     width: 100%;
+}
+
+textarea {
+  font-size: 10px;
+  height: 250px !important;
+  width: 100%;
 }
 
 </style>
