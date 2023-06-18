@@ -7,15 +7,18 @@ import VersionPannel from './components/VersionPannel.vue';
   const selectedDAG = ref(0)
 
   const showModal = ref(false)
+  const showModalNotification = ref(false)
+  const modal_content = ref('')
+  
   const modal_input_text = ref('')
   const modal_output_text = ref('')
-  const run_output_text = ref('')
-  var run_complete = ref('false')
-
+  var run_complete = ref(false)
+  var run_processing = ref(false)
+  
 
   const onSave = () => {
     console.log('save')
-    console.log(JSON.stringify(DAGS.value[selectedDAG.value]))
+    // console.log(JSON.stringify(DAGS.value[selectedDAG.value]))
 
     fetch(url+'/save', {
       method: 'POST',
@@ -24,26 +27,29 @@ import VersionPannel from './components/VersionPannel.vue';
       'Content-Type': 'application/json'
       }
   })
-  .then(response => response.json())
-  .catch(error => console.error(error));        
+  .then(response =>  setAndShowModalNotification("Save Successful!"))
+  .catch((error) => {
+    console.error(error)
+    setAndShowModalNotification("Save Failed!")
+  });        
   }
   
  
   const onRun = ()=>{
     modal_input_text.value = Array(DAGS.value[selectedDAG.value].inputPanels.length).fill('')
     showModal.value=true
-    run_output_text.value = ''
+    modal_output_text.value = ''
     run_complete.value = false
   }
 
   const onRunModal = () => {
     console.log('run modal')
-
+    run_processing.value = true
     var run_data = {
       'DAGS':DAGS.value[selectedDAG.value],
       'input_text':modal_input_text.value,
     }
-    console.log(JSON.stringify(run_data))
+    // console.log(JSON.stringify(run_data))
     fetch(url+'/test', {
       method: 'POST',
       body: JSON.stringify(run_data),
@@ -51,10 +57,14 @@ import VersionPannel from './components/VersionPannel.vue';
       'Content-Type': 'application/json'
       }
   })
-  .then(response => response.json())
+  .then((response) => {
+      run_processing.value = false
+      return response.json()
+  })
   .then(data => {
     console.log(data)
     modal_output_text.value = data
+    console.log("after update",modal_output_text.value)
     run_complete.value = true
   })
   .catch(error => console.error(error));        
@@ -62,15 +72,22 @@ import VersionPannel from './components/VersionPannel.vue';
 
   const onPublish = () => {
     console.log('Publish')
+
+    var publish_data = {
+      'DAGS':DAGS.value[selectedDAG.value],
+      'input_text': Array(DAGS.value[selectedDAG.value].inputPanels.length).fill('')
+    }
     fetch(url+'/publish', {
       method: 'POST',
-      body: JSON.stringify(DAGS.value[selectedDAG.value]),
+      body: JSON.stringify(publish_data),
       headers: {
       'Content-Type': 'application/json'
       }
   })
-  .then(response => response.json())
-  .catch(error => console.error(error));        
+  .then((response) => {
+    setAndShowModalNotification("Publish Sucessful!")
+  })
+  .catch(error => setAndShowModalNotification("Publish Failed!"));        
   }
 
   onMounted(async () => {
@@ -83,11 +100,14 @@ import VersionPannel from './components/VersionPannel.vue';
   const onDownload = () => {
     console.log('download')
     console.log('save')
-    console.log(JSON.stringify(DAGS.value[selectedDAG.value]))
+    var download_data = {
+      'DAGS':DAGS.value[selectedDAG.value],
+      'input_text': Array(DAGS.value[selectedDAG.value].inputPanels.length).fill('')
+    }
 
-    fetch(url+'/save', {
+    fetch(url+'/download', {
       method: 'POST',
-      body: JSON.stringify(DAGS.value[selectedDAG.value]),
+      body: JSON.stringify(download_data),
       headers: {
       'Content-Type': 'application/json'
       }
@@ -98,6 +118,10 @@ import VersionPannel from './components/VersionPannel.vue';
 
   }
 
+  const setAndShowModalNotification = (value) => {
+    modal_content.value = value
+    showModalNotification.value = true
+  }
 
 
 
@@ -148,26 +172,37 @@ import VersionPannel from './components/VersionPannel.vue';
               </div>
             </template>
             
-            <div>
-              <button @click="onRunModal">Run</button>
+            <div class="row">
+              <div class="col-md-1">
+                <button style="width=100px" @click="onRunModal">Run  </button>
+              </div>
+              <template v-if="run_processing">
+                <font-awesome-icon  class="col-md-1" :icon="['fas', 'spinner']" size="lg" spin style="padding:5px; margin-top: 10px;"/>
+              </template>
             </div>
             <template v-if="run_complete" >
               <div>
                 Output
               </div>
-              <!-- <div v-for="(value, name, index) in object"> -->
               <template v-for="(value,key,index)  in modal_output_text" :key=index>
               <div class="col-md-1">
                   <label>{{ key }}</label>
                 </div>
                 <div class="col-md-11">
-                  <textarea>{{ value.trim() }}</textarea>
+                  <textarea>{{ value }}</textarea>
                 </div>
               </template>
-            </template>
+          </template>
         </div>
 
         </div>
+      </div>
+    </div>
+
+    <div v-if="showModalNotification" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="()=>{showModalNotification=false}">&times;</span>
+        <label>{{ modal_content }}</label>
       </div>
     </div>
   </div>
