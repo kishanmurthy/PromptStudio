@@ -1,21 +1,56 @@
 <script setup>
 
-import { ref } from 'vue';
-const promptTag = ref('')
-const outputTag = ref('')
-const outputFormat = ref('')
-const selected = ref('')
+import { defineProps, onUpdated, ref, watch } from 'vue';
+
+const emit = defineEmits(['update:prompt_name','update:prompt_value','update:output_tag','update:output_format'])
+
+const props = defineProps({
+    prompt_name: String,
+    prompt_value: String,
+    output_tag: String,
+    output_format: String,
+})
+
+const promptName = ref(props.prompt_name)
+const promptTag = ref(props.prompt_value)
+const outputTag = ref(props.output_tag)
+const outputFormat = ref(props.output_format)
+
+onUpdated(() => {
+    promptName.value = props.prompt_name;
+    promptTag.value = props.prompt_value;
+    outputTag.value = props.output_tag;
+    outputFormat.value = props.output_format;
+});
+
+watch(promptName, (newValue) => {
+  emit('update:prompt_name', newValue);
+});
+
+watch(promptTag, (newValue) => {
+  emit('update:prompt_value', newValue);
+});
+
+watch(outputTag, (newValue) => {
+  emit('update:output_tag', newValue);
+});
+
+watch(outputFormat, (newValue) => {
+  emit('update:output_format', newValue);
+});
+
+
 </script>
 
 <template>
     <div class="container-fluid">
-    <h3>Prompt</h3>
+    <h3>{{promptName }}</h3>
     <label>Prompt</label>
     <input type="textarea" v-model="promptTag" />
     <label>Output Tag Name</label>
     <input type="text" v-model="outputTag" />
     <label>Output Format</label>    
-    <select v-model="selected">
+    <select v-model="outputFormat">
         <option selected>JSON</option>
         <option>CSV</option>
         <option>Text</option>
