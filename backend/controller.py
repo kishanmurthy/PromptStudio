@@ -38,7 +38,8 @@ def test_dag():
     node_dict, tp_sort = create_dag_object(dag_arch)
     node_input = dag_arch["input"]
     output_dict, input_dicts = prompt_process(node_input, node_dict, tp_sort)
-    return json.dumps(input_dicts)
+    # print(input_dicts)
+    return json.dumps(output_dict)
 
 @app.route('/download', methods=["POST"])
 def download_code():
