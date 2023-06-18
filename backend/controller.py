@@ -2,7 +2,7 @@ import asyncio
 import random
 import uuid
 from urllib.parse import urlencode, urlparse
-from mongo_db import save_or_update, save_publish_version, find_published_dag_arch
+from mongo_db import save_or_update, save_publish_version, find_published_dag_arch, save_or_update_frontend, load_frontend
 from dag_parser import create_dag_object
 from prompt_processing import prompt_process
 from generate_code import generate_python_code
@@ -19,6 +19,16 @@ def application_start():
 
 @app.route('/save', methods=["POST"])
 def save_dag():
+	dag_arch = request.get_json()
+	save_or_update_frontend(dag_arch)
+	return jsonify({'statusCode':200})
+
+@app.route('/load/<flow_name>', methods=["GET"])
+def load_dag(flow_name):
+	return load_frontend(flow_name)
+	
+@app.route('/save_version', methods=["POST"])
+def save_version_dag():
 	dag_arch = request.get_json()
 	save_or_update(dag_arch)
 	return jsonify({'statusCode':200})
