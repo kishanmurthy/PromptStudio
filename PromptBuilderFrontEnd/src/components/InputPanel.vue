@@ -31,7 +31,7 @@ watch(input_tag, (newValue) => {
 <template>
     <div class="container-fluid" style="margin-top:-40px">
         <h3>{{ input_name }}</h3>
-        <label>Input Tag</label>
+        <label style="padding-top:25px;">Input Tag</label>
         <input  class = "input-tag" type="text" v-model="input_tag" />
     </div>
 </template>
