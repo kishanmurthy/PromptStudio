@@ -147,7 +147,7 @@ import VersionPannel from './components/VersionPannel.vue';
   <div class="container-fluid">
     <div class="row top-panel">
       <div class="col-md-8">
-        <h3>Prompt Builder</h3>
+        <h3>Prompt Studio</h3>
       </div>
       <div class="col-md-2">
         <div class="row">
@@ -173,7 +173,7 @@ import VersionPannel from './components/VersionPannel.vue';
       @update:selectedDAG="(new_value)=>{selectedDAG = new_value}"
     />
     <div v-if="showModal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content run-dialog">
         <div style="display:inline-flex">
           <h3 class="col-md-11">Run Dialog</h3>
           <span class="close col-md-1" @click="()=>{showModal=false}">&times;</span>
@@ -219,9 +219,12 @@ import VersionPannel from './components/VersionPannel.vue';
 
     <div v-if="showModalNotification" class="modal">
       <div class="modal-content">
-        <span class="close" @click="()=>{showModalNotification=false}">&times;</span>
-        <label>{{ modal_content }}</label>
-      </div>
+        <div style="display:inline-flex">
+          <h3 class="col-md-11">Status</h3>
+          <span class="close col-md-1" @click="()=>{showModalNotification=false}">&times;</span>
+        </div>
+        <label style="margin-top:15px;">{{ modal_content }}</label>
+        </div>
     </div>
   </div>
 
@@ -246,8 +249,17 @@ import VersionPannel from './components/VersionPannel.vue';
   padding: 20px;
   border: 1px solid #888;
   width: min-content;
+  min-width: 200px;
   max-height: 500px;
   overflow-y: scroll;
+}
+
+.run-dialog {
+  min-width: 750px !important;
+}
+
+.run-dialog textarea {
+  width: inherit !important;
 }
 
 .close {
@@ -273,6 +285,6 @@ textarea {
 }
 
 .top-panel {
-        background: #D0D0D0;
+  background: #D0D0D0;
 }
 </style>
