@@ -1,0 +1,6 @@
+pip install asyncio==3.4.3
+pip install aioflask==0.4.0
+pip intall Flask=2.1.3
+pip install Flask-Cors==3.0.10
+pip install openai
+pip install langchain
