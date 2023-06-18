@@ -5,24 +5,24 @@ import { ref } from 'vue';
 
 const emit = defineEmits(['createdNode'])
 const inputTags = ref('')
-const inputCount = ref(0)
-const promptCount = ref(0)
+var inputCount = 0
+var promptCount = 0
 
 const { nodes, addNodes, setNodes, setEdges, dimensions, setTransform, toObject } = useVueFlow()
 
 function addInput() {
-  inputCount.value++
+  inputCount++
 
   const newNode = {
-    id: `input-node-${inputCount.value}`,
-    label: `Input ${inputCount.value}`,
+    id: `input-node-${inputCount}`,
+    label: `Input ${inputCount}`,
     type: "input",
     position: { x: 100, y: Math.random() * dimensions.value.height },
     sourcePosition: Position.Right,
     events: {
       click: (node) => {
         console.log('click', node)
-        emit('createdNode', inputCount.value)
+        emit('createdNode', inputCount)
       }
     }
   }
@@ -31,11 +31,11 @@ function addInput() {
 }
 
 function addPrompt() {
-  promptCount.value++
+  promptCount++
 
   const newNode = {
-    id: `prompt-node-${promptCount.value}`,
-    label: `Prompt ${promptCount.value}`,
+    id: `prompt-node-${promptCount}`,
+    label: `Prompt ${promptCount}`,
     type: "default",
     position: { x: 450, y: Math.random() * dimensions.value.height },
     sourcePosition: Position.Right,
@@ -77,7 +77,7 @@ function addOutput() {
 
 <style>
   .button-node {
-    width: 100px;
+    min-width: 100px;
     display: block;
     border: 1px #ccc;
     border-radius: 5px;

@@ -1,23 +1,23 @@
 <script setup>
 
-import { Background } from '@vue-flow/background';
-import { Controls } from '@vue-flow/controls';
-import '@vue-flow/controls/dist/style.css';
-import { VueFlow, useVueFlow } from '@vue-flow/core';
-
-
-import { MiniMap } from '@vue-flow/minimap';
-import { ref } from 'vue';
-import Begin from './Begin.vue';
-import NodeControl from './NodeControl.vue';
-import Prompt from './Prompt.vue';
-import Run from './Run.vue';
+import { Background } from '@vue-flow/background'
+import { Controls } from '@vue-flow/controls'
+import '@vue-flow/controls/dist/style.css'
+import { VueFlow, useVueFlow } from '@vue-flow/core'
+import { MiniMap } from '@vue-flow/minimap'
+import { ref } from 'vue'
+import Begin from './Begin.vue'
+import Prompt from './Prompt.vue'
+import Run from './Run.vue'
+import NodeControl from './NodeControl.vue'
 
 const state = ref('begin')
 const inputTags = ref([{text:''}])
 const Prompts = ref([])
 const Outputs = ref([])
-const elements = ref([])
+const props = defineProps(['elements']);
+
+// const elements = ref([])
 const { onConnect, addEdges } = useVueFlow()
 
 onConnect((params) => addEdges(params))
@@ -29,7 +29,7 @@ onConnect((params) => addEdges(params))
     <div class="row">
       <div class="col-md-10 dag-panel">
           <VueFlow
-            v-model="elements"
+            v-model="props.elements"
             class="basicflow"
             :default-edge-options="{ type: 'smoothstep' }"
             :min-zoom="0.2"

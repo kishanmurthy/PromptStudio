@@ -1,5 +1,9 @@
 <script setup>
   import VersionPannel from './components/VersionPannel.vue';
+  import mongoData from "./assets/versions-get.json";
+  import { ref } from 'vue'
+  
+  const mongoop = ref(mongoData);
 </script>
 
 <template>
@@ -28,7 +32,7 @@
         <h4>Placeholder Text</h4>
       </div>
     </div>
-    <VersionPannel/>
+    <VersionPannel v-bind:versions="mongoop"/>
   </div>
 
 </template>
