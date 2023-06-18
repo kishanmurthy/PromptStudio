@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from 'vue';
-import VersionPannel from './components/VersionPannel.vue';
+  import VersionPannel from './components/VersionPannel.vue';
 
   const DAGS = ref([])
   const selectedDAG = ref(0)
