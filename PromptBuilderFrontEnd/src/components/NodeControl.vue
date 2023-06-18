@@ -87,7 +87,7 @@ function addOutput() {
 
 <style>
   .button-node {
-    width: 100px;
+    min-width: 100px;
     display: block;
     border: 1px #ccc;
     border-radius: 5px;

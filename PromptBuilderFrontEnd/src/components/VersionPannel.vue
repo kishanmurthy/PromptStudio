@@ -24,7 +24,7 @@
     
     const add_flow = () => {
         count+=1
-        DAGS.value.push({'name':`Verson ${count}`, 'inputPanels':[], 'promptPanels':[], 'elements':[]})
+        DAGS.value.push({'name':`Version ${count}`, 'inputPanels':[], 'promptPanels':[], 'elements':[]})
     }
 
     onMounted(() => {
@@ -50,15 +50,20 @@
 <template>
     <div class="container-fluid">
         <div class="row full-panel">
-            <div class="col-md-1">
-                <button @click="add_flow">Add Flow</button>
+            <div class="col-md-2">
+                <ol>
                     <template v-for="(DAG,index) in DAGS">
-                        <button class="version-list" @click="selectedDAG=index">
+                        <li class="version-list" @click="selectedDAG=index">
                             {{DAG.name}}
-                        </button>
+                        </li>
                     </template>
+                </ol>
+                <button class="button-node" @click="add_flow">
+                    <font-awesome-icon :icon="['fas', 'plus']" size="lg"/>
+                    <span>New Flow</span>
+                </button>
             </div>
-            <div class="col-md-11">
+            <div class="col-md-10">
                 <template v-for="(DAG,index) in DAGS">
 
                     <template v-if="index==selectedDAG">
@@ -90,8 +95,12 @@
     .dag-panel {
         height: 100vh;
     }
-    .version-list {
-        cursor: pointer;
-        width: 100%;
+    ol { 
+        margin-top: 20px !important;
     }
+    li {
+        padding: 5px 0;
+        cursor: pointer;
+    }
+
 </style>

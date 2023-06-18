@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+  import { ref } from 'vue';
 import VersionPannel from './components/VersionPannel.vue';
 
   const url = 'http://127.0.0.1:5000'
