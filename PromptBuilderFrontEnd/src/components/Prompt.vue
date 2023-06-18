@@ -49,7 +49,7 @@ watch(outputFormat, (newValue) => {
     <label>Prompt</label>
     <textarea v-model="promptTag"/>
     <label>Output Tag Name</label>
-    <input type="text" v-model="outputTag" />
+    <input style="width:100%" type="text" v-model="outputTag" />
     <label>Output Format</label>    
     <select v-model="outputFormat">
         <option selected>JSON</option>

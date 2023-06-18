@@ -4,10 +4,20 @@ import asyncio
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
 mydb = myclient["prompt_builder"]
+front_end_collection = mydb["prompt_archs_frontend"]
 mycollection = mydb["prompt_archs"]
 published_collection = mydb["published_flow_versions"]
 
+
 mycollection.create_index(
+	[
+		("flow_name", 1),
+		("version", -1)
+	],
+	unique = True
+)
+
+front_end_collection.create_index(
 	[
 		("flow_name", 1),
 		("version", -1)
@@ -22,6 +32,17 @@ published_collection.create_index(
 	],
 	unique = True
 )
+
+def save_or_update_frontend(json_data):
+	data = front_end_collection.find_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]})
+	if data is None:
+		front_end_collection.insert_one(json_data)
+	else:
+		front_end_collection.replace_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]}, json_data, True)
+
+def load_frontend(flow_name):
+	versions = front_end_collection.find({'flow_name': flow_name})
+	return versions
 
 def save_or_update(json_data):
 	data = mycollection.find_one({'flow_name': json_data["flow_name"], 'version': json_data["version"]})
