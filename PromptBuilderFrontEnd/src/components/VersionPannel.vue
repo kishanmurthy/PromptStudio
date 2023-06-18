@@ -51,13 +51,13 @@
     <div class="container-fluid">
         <div class="row full-panel">
             <div class="col-md-2">
-                <ol>
+                <ul type="square">
                     <template v-for="(DAG,index) in DAGS">
                         <li class="version-list" @click="selectedDAG=index">
-                            {{DAG.name}}
+                            <a>{{DAG.name}}</a>
                         </li>
                     </template>
-                </ol>
+                </ul>
                 <button class="button-node" @click="add_flow">
                     <font-awesome-icon :icon="['fas', 'plus']" size="lg"/>
                     <span>New Flow</span>
@@ -102,5 +102,4 @@
         padding: 5px 0;
         cursor: pointer;
     }
-
 </style>

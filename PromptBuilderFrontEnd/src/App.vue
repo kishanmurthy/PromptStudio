@@ -183,6 +183,8 @@ import VersionPannel from './components/VersionPannel.vue';
   padding: 20px;
   border: 1px solid #888;
   width: min-content;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 .close {
