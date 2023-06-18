@@ -1,7 +1,21 @@
 <script setup>
     import DagPannel from './DagPannel.vue';
 
-    import { ref } from 'vue';
+    import { defineEmits, defineProps, onMounted, onUpdated, ref, watch } from 'vue';
+
+    const emit = defineEmits(['update:DAGS', 'update:selectedDAG'])
+    
+
+    const props = defineProps({
+        DAGS: {
+            type: Array,
+            required: true
+        },
+        selectedDAG: {
+            type: Number,
+            required: false
+        }
+    })
 
     const DAGS = ref([])
 
@@ -13,6 +27,23 @@
         DAGS.value.push({'name':`Verson ${count}`, 'inputPanels':[], 'promptPanels':[], 'elements':[]})
     }
 
+    onMounted(() => {
+        DAGS.value = props.DAGS
+        selectedDAG.value = props.selectedDAG
+    })
+
+    onUpdated(() => {
+        DAGS.value = props.DAGS
+        selectedDAG.value = props.selectedDAG
+    }),
+
+    watch(DAGS, () => {
+        emit('update:DAGS', DAGS.value)
+    })
+
+    watch(selectedDAG, () => {
+        emit('update:selectedDAG', selectedDAG.value)
+    })
 
 </script>
 

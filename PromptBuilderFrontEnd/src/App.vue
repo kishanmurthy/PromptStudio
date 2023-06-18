@@ -1,5 +1,10 @@
 <script setup>
-  import VersionPannel from './components/VersionPannel.vue';
+  import { ref } from 'vue';
+import VersionPannel from './components/VersionPannel.vue';
+
+  const DAGS = ref([])
+  const selectedDAG = ref(0)
+
 </script>
 
 <template>
@@ -25,7 +30,12 @@
         </div>
       </div>
     </div>
-    <VersionPannel/>
+    <VersionPannel 
+      :DAGS="DAGS"
+      :selectedDAG="selectedDAG"
+      @update-DAGS="(new_value)=>{DAGS = new_value}"
+      @update:selectedDAG="(new_value)=>{selectedDAG = new_value}"
+    />
   </div>
 
 </template>
