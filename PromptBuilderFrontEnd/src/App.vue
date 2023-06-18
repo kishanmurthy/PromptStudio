@@ -157,7 +157,7 @@ import VersionPannel from './components/VersionPannel.vue';
       @update:selectedDAG="(new_value)=>{selectedDAG = new_value}"
     />
     <div v-if="showModal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content run-dialog">
         <div style="display:inline-flex">
           <h3 class="col-md-11">Run Dialog</h3>
           <span class="close col-md-1" @click="()=>{showModal=false}">&times;</span>
@@ -238,6 +238,14 @@ import VersionPannel from './components/VersionPannel.vue';
   overflow-y: scroll;
 }
 
+.run-dialog {
+  min-width: 750px !important;
+}
+
+.run-dialog textarea {
+  width: inherit !important;
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -261,6 +269,6 @@ textarea {
 }
 
 .top-panel {
-        background: #D0D0D0;
+  background: #D0D0D0;
 }
 </style>
