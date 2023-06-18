@@ -35,6 +35,7 @@
     onUpdated(() => {
         DAGS.value = props.DAGS
         selectedDAG.value = props.selectedDAG
+        count = DAGS.value.length
     }),
 
     watch(DAGS, () => {
