@@ -45,7 +45,7 @@ watch(outputFormat, (newValue) => {
 
 <template>
     <div class="container-fluid" style="margin-top:-40px">
-    <h3>{{promptName }}</h3>
+    <h4>{{promptName }}</h4>
     <label style="padding-top:25px;">Prompt</label>
     <textarea v-model="promptTag"/>
     <label>Output Tag Name</label>
