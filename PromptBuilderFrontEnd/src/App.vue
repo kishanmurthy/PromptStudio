@@ -180,7 +180,7 @@ import VersionPannel from './components/VersionPannel.vue';
         </div>
         <label>Input Tags</label>
         <div class="container">
-          <div class="row">
+          <div class="row" style="display:block;">
             <template v-for="(panel, index)  in DAGS[selectedDAG].inputPanels" :key=index>
               <div class="col-md-1">
                 <label>{{ panel.input_tag }}</label>
