@@ -20,7 +20,7 @@ mycollection.create_index(
 
 front_end_collection.create_index(
 	[
-		("DAGS.name", 1)
+		("name", 1)
 	],
 	unique = True
 )
@@ -34,17 +34,20 @@ published_collection.create_index(
 )
 
 def save_or_update_frontend(json_data):
-	data = front_end_collection.find_one({'name': json_data["DAGS"]["name"]})
+	data = front_end_collection.find_one({'name': json_data["name"]})
 	if data is None:
 		front_end_collection.insert_one(json_data)
 	else:
-		front_end_collection.replace_one({'name': json_data["DAGS"]["name"]}, json_data, True)
+		front_end_collection.replace_one({'name': json_data["name"]}, json_data, True)
 
 def load_frontend():
 	versions = front_end_collection.find()
-	print(type(versions))
 	list_cur = list(versions)
+	for curr in list_cur:
+		del curr["_id"]
 	json_data = dumps(list_cur)
+	print(type(json_data))
+
 	return json_data
 
 def save_or_update(json_data):
