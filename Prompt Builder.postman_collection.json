@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "c16370d4-6926-4d26-8bb4-46e6ef0ffce4",
+		"name": "Prompt Builder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26808891"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    id: '1',\n    type: 'input',\n    label: 'Node 1',\n    position: { x: 0, y: 50 },\n    sourcePosition: Position.Right,\n  },\n  {\n    id: '2',\n    type: 'output',\n    label: 'Node 2',\n    position: { x: 250, y: 0 },\n    targetPosition: Position.Left,\n  },\n  { id: '3', \n   label: 'Node 3', \n   position: { x: 250, y: 100 }, \n   sourcePosition: Position.Right, \n   targetPosition: Position.Left },\n  { id: '4', \n   label: 'Node 4', \n   position: { x: 500, y: 150 }, \n   sourcePosition: Position.Right, \n   targetPosition: Position.Left },\n  {\n    id: '5',\n    type: 'output',\n    label: 'Node 5',\n    position: { x: 750, y: 50 },\n    sourcePosition: Position.Right,\n    targetPosition: Position.Left,\n  },\n  { id: 'e1-2', source: '1', target: '2', animated: true },\n  { id: 'e1-3', source: '1', target: '3', markerEnd: MarkerType.Arrow },\n  {\n    id: 'e4-5',\n    source: '4',\n    target: '5',\n    style: { stroke: 'orange' },\n    labelBgStyle: { fill: 'orange' },\n  },\n  { id: 'e3-4', source: '3', target: '4' },\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/save",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "load",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    id: '1',\n    type: 'input',\n    label: 'Node 1',\n    position: { x: 0, y: 50 },\n    sourcePosition: Position.Right,\n  },\n  {\n    id: '2',\n    type: 'output',\n    label: 'Node 2',\n    position: { x: 250, y: 0 },\n    targetPosition: Position.Left,\n  },\n  { id: '3', \n   label: 'Node 3', \n   position: { x: 250, y: 100 }, \n   sourcePosition: Position.Right, \n   targetPosition: Position.Left },\n  { id: '4', \n   label: 'Node 4', \n   position: { x: 500, y: 150 }, \n   sourcePosition: Position.Right, \n   targetPosition: Position.Left },\n  {\n    id: '5',\n    type: 'output',\n    label: 'Node 5',\n    position: { x: 750, y: 50 },\n    sourcePosition: Position.Right,\n    targetPosition: Position.Left,\n  },\n  { id: 'e1-2', source: '1', target: '2', animated: true },\n  { id: 'e1-3', source: '1', target: '3', markerEnd: MarkerType.Arrow },\n  {\n    id: 'e4-5',\n    source: '4',\n    target: '5',\n    style: { stroke: 'orange' },\n    labelBgStyle: { fill: 'orange' },\n  },\n  { id: 'e3-4', source: '3', target: '4' },\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/save",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"flow_name\": \"job description\",\n\t\"version\": 1,\n\t\"input\": {\n\t\t\"{{JD}}\": \"Interstate Gas Supply (IGS Energy) seeks Data Scientist, Enterprise Analytics. Position based in Dublin, OH, but remote work within the U.S. will also be considered.\\n\\nContinuously improve processes and decision-making through data. Using a statistics or mathematics background, the Data Scientist will wrangle with cross-sectional and time series data,\\n\\napply statistical tests to test hypotheses, and bring data science workloads to production through version control, continuous deployment, modular coding and software development best\\n\\npractices. The Data Scientist will develop and scale models in a cloud-based, big data environment (Azure/Databricks/Snowflake) and will use Python/PySpark, SQL languages.\\n\\nSpecifically, job duties include:\\nWork closely with stakeholders, end-users, and business analysts to understand requirements and scope project\\nAnalyze various data to understand relationships, integrity and how data can be leveraged\\nDevelop proof of concept solutions (model development, validation) and work closely with data engineering team to scale solutions, automate quality assurance and monitor accuracy\\nMaintain and develop quality standards for data assets within pipeline\\nProactively partner and field requests from business partners for prospective, in-flight, and future ML pipelines\\n\\nRequires: Master’s degree in Mathematics, Statistics, or Data Science.\\n\\nSalary range is $77,000-$129,000 per year.\\n\\nTo apply, visit https://igsenergy.wd1.myworkdayjobs.com/IGS, or send resume to: Matthew Straley, IGS Energy, 6100 Emerald Parkway, Dublin, OH 43016\\n\\nOur Offer to You:\\nComprehensive healthcare benefits including medical, dental, vision, and employer health savings account contributions\\n401(k) retirement plan with company matching\\nTuition reimbursement, employee wellness programs, and other perks and discounts\\nPaid leave policies\\nAnd more, such as paid time off, flexible spending, employer paid life and disability, employee assistance program, and domestic partner benefits\\n\\nEqual Opportunity Employment:\\n\\nIt is the policy of IGS Energy to ensure equal employment opportunity in accordance with all applicable federal and state regulations and guidelines. Employment discrimination against employees and applicants due to race, color, religion, sex (including sexual harassment), national origin, disability, age, sexual orientation, gender identity, military status, and veteran status or other legally protected class under applicable law is prohibited.\\n\",\n\t\t\"{{RESUME}}\": \"John Smith\\n123 Main Street, City, State ZIP\\n(123) 456-7890\\njohnsmith@email.com \\n\\n Summary: \\nHighly skilled data scientist with 5+ years of experience in analyzing and interpreting complex datasets. Proficient in machine learning algorithms, statistical analysis, and data visualization. Strong problem-solving and communication skills. Committed to leveraging data-driven insights to drive business growth and improve decision-making.\\n Education:\\n Master of Science in Data Science, XYZ University, City, State\\n - Coursework: Machine Learning, Statistical Analysis, Big Data Analytics\\n - GPA: 3.9/4.0\\n\\n Skills:\\n - Programming Languages: Python (NumPy, Pandas, scikit-learn), R, SQL\\n - Machine Learning: Regression, Classification, Clustering, Neural Networks\\n - Data Visualization: Tableau, Matplotlib, Seaborn\\n - Statistical Analysis: Hypothesis Testing, A/B Testing, Time Series Analysis\\n - Big Data Technologies: Hadoop, Spark\\n\\n Experience:\\nData Scientist, ABC Company, City, State\\n- Developed predictive models to optimize marketing campaigns, resulting in a 20% increase in customer acquisition.\\n- Conducted statistical analysis on customer behavior data to identify patterns and make recommendations for product improvements.\\n- Collaborated with cross-functional teams to design and implement data-driven solutions, improving operational efficiency by 15%.\\n\\nData Analyst, DEF Corporation, City, State\\n- Cleaned and transformed large datasets using Python and SQL, reducing data processing time by 30%.\\n- Developed automated reports and dashboards using Tableau, providing real-time insights to senior management.\\n- Assisted in the design and execution of A/B tests, resulting in a 10% increase in conversion rates.\\nProjects:\\n- Predictive Maintenance: Built a machine learning model to predict equipment failures, reducing maintenance costs by 25%.\\n- Customer Segmentation: Conducted clustering analysis on customer data to identify distinct segments and personalize marketing campaigns.\\n- Fraud Detection: Developed an anomaly detection model using unsupervised learning algorithms to identify fraudulent transactions.\\nPublications:\\n- Smith, J., & Johnson, A. (2022). \\\"Predictive Analytics in Retail: A Case Study.\\\" Journal of Data Science, 10(3), 45-58.\\nCertifications:\\n- Certified Data Scientist (CDS), Data Science Association\\nLanguages:\\n- English (Fluent)\\n- Spanish (Intermediate)\\nReferences:\\nAvailable upon request\\n\"\n\t},\n\t\"dag_data\": [{\n\t\t\t\"id\": 1,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 1\",\n\t\t\t\"output_tag\": \"{{JD}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 2,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 2\",\n\t\t\t\"output_tag\": \"{{RESUME}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 3,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 3\",\n\t\t\t\"prompt\": \"Extract the software technical hard skills from the Resume specified by triple backticks and output the result using CSV format. \\n \\n    Job Description: ```{{JD}}``` \\n ``output`` \\nThe output must only contain comma separated values.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_3}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 4,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 4\",\n\t\t\t\"prompt\": \"Enhance the grammer and words used in resume specified by triple backticks and output the result using text format.\\n \\n    Resume: ```{{RESUME}}``` \\n Return the new entire enhanced resume in text format.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_4}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 5,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 5\",\n\t\t\t\"prompt\": \"Update the Resume specified by triple backticks RESUME: ```{{prompt_output_node_4}}``` \\n with the skills: {{prompt_output_node_3}} and return text format\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_5}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 6,\n\t\t\t\"type\": \"output\",\n\t\t\t\"label\": \"Node 6\"\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e1-3\",\n\t\t\t\"source\": \"1\",\n\t\t\t\"target\": \"3\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e2-4\",\n\t\t\t\"source\": \"2\",\n\t\t\t\"target\": \"4\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e3-5\",\n\t\t\t\"source\": \"3\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e4-5\",\n\t\t\t\"source\": \"4\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e5-6\",\n\t\t\t\"source\": \"5\",\n\t\t\t\"target\": \"6\",\n\t\t\t\"animated\": true\n\t\t}\n\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "publish",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"flow_name\": \"job description\",\n\t\"version\": 1,\n\t\"input\": {\n\t\t\"{{JD}}\": \"Interstate Gas Supply (IGS Energy) seeks Data Scientist, Enterprise Analytics. Position based in Dublin, OH, but remote work within the U.S. will also be considered.\\n\\nContinuously improve processes and decision-making through data. Using a statistics or mathematics background, the Data Scientist will wrangle with cross-sectional and time series data,\\n\\napply statistical tests to test hypotheses, and bring data science workloads to production through version control, continuous deployment, modular coding and software development best\\n\\npractices. The Data Scientist will develop and scale models in a cloud-based, big data environment (Azure/Databricks/Snowflake) and will use Python/PySpark, SQL languages.\\n\\nSpecifically, job duties include:\\nWork closely with stakeholders, end-users, and business analysts to understand requirements and scope project\\nAnalyze various data to understand relationships, integrity and how data can be leveraged\\nDevelop proof of concept solutions (model development, validation) and work closely with data engineering team to scale solutions, automate quality assurance and monitor accuracy\\nMaintain and develop quality standards for data assets within pipeline\\nProactively partner and field requests from business partners for prospective, in-flight, and future ML pipelines\\n\\nRequires: Master’s degree in Mathematics, Statistics, or Data Science.\\n\\nSalary range is $77,000-$129,000 per year.\\n\\nTo apply, visit https://igsenergy.wd1.myworkdayjobs.com/IGS, or send resume to: Matthew Straley, IGS Energy, 6100 Emerald Parkway, Dublin, OH 43016\\n\\nOur Offer to You:\\nComprehensive healthcare benefits including medical, dental, vision, and employer health savings account contributions\\n401(k) retirement plan with company matching\\nTuition reimbursement, employee wellness programs, and other perks and discounts\\nPaid leave policies\\nAnd more, such as paid time off, flexible spending, employer paid life and disability, employee assistance program, and domestic partner benefits\\n\\nEqual Opportunity Employment:\\n\\nIt is the policy of IGS Energy to ensure equal employment opportunity in accordance with all applicable federal and state regulations and guidelines. Employment discrimination against employees and applicants due to race, color, religion, sex (including sexual harassment), national origin, disability, age, sexual orientation, gender identity, military status, and veteran status or other legally protected class under applicable law is prohibited.\\n\",\n\t\t\"{{RESUME}}\": \"John Smith\\n123 Main Street, City, State ZIP\\n(123) 456-7890\\njohnsmith@email.com \\n\\n Summary: \\nHighly skilled data scientist with 5+ years of experience in analyzing and interpreting complex datasets. Proficient in machine learning algorithms, statistical analysis, and data visualization. Strong problem-solving and communication skills. Committed to leveraging data-driven insights to drive business growth and improve decision-making.\\n Education:\\n Master of Science in Data Science, XYZ University, City, State\\n - Coursework: Machine Learning, Statistical Analysis, Big Data Analytics\\n - GPA: 3.9/4.0\\n\\n Skills:\\n - Programming Languages: Python (NumPy, Pandas, scikit-learn), R, SQL\\n - Machine Learning: Regression, Classification, Clustering, Neural Networks\\n - Data Visualization: Tableau, Matplotlib, Seaborn\\n - Statistical Analysis: Hypothesis Testing, A/B Testing, Time Series Analysis\\n - Big Data Technologies: Hadoop, Spark\\n\\n Experience:\\nData Scientist, ABC Company, City, State\\n- Developed predictive models to optimize marketing campaigns, resulting in a 20% increase in customer acquisition.\\n- Conducted statistical analysis on customer behavior data to identify patterns and make recommendations for product improvements.\\n- Collaborated with cross-functional teams to design and implement data-driven solutions, improving operational efficiency by 15%.\\n\\nData Analyst, DEF Corporation, City, State\\n- Cleaned and transformed large datasets using Python and SQL, reducing data processing time by 30%.\\n- Developed automated reports and dashboards using Tableau, providing real-time insights to senior management.\\n- Assisted in the design and execution of A/B tests, resulting in a 10% increase in conversion rates.\\nProjects:\\n- Predictive Maintenance: Built a machine learning model to predict equipment failures, reducing maintenance costs by 25%.\\n- Customer Segmentation: Conducted clustering analysis on customer data to identify distinct segments and personalize marketing campaigns.\\n- Fraud Detection: Developed an anomaly detection model using unsupervised learning algorithms to identify fraudulent transactions.\\nPublications:\\n- Smith, J., & Johnson, A. (2022). \\\"Predictive Analytics in Retail: A Case Study.\\\" Journal of Data Science, 10(3), 45-58.\\nCertifications:\\n- Certified Data Scientist (CDS), Data Science Association\\nLanguages:\\n- English (Fluent)\\n- Spanish (Intermediate)\\nReferences:\\nAvailable upon request\\n\"\n\t},\n\t\"dag_data\": [{\n\t\t\t\"id\": 1,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 1\",\n\t\t\t\"output_tag\": \"{{JD}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 2,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 2\",\n\t\t\t\"output_tag\": \"{{RESUME}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 3,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 3\",\n\t\t\t\"prompt\": \"Extract the software technical hard skills from the Resume specified by triple backticks and output the result using CSV format. \\n \\n    Job Description: ```{{JD}}``` \\n ``output`` \\nThe output must only contain comma separated values.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_3}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 4,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 4\",\n\t\t\t\"prompt\": \"Enhance the grammer and words used in resume specified by triple backticks and output the result using text format.\\n \\n    Resume: ```{{RESUME}}``` \\n Return the new entire enhanced resume in text format.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_4}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 5,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 5\",\n\t\t\t\"prompt\": \"Update the Resume specified by triple backticks RESUME: ```{{prompt_output_node_4}}``` \\n with the skills: {{prompt_output_node_3}} and return text format\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_5}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 6,\n\t\t\t\"type\": \"output\",\n\t\t\t\"label\": \"Node 6\"\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e1-3\",\n\t\t\t\"source\": \"1\",\n\t\t\t\"target\": \"3\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e2-4\",\n\t\t\t\"source\": \"2\",\n\t\t\t\"target\": \"4\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e3-5\",\n\t\t\t\"source\": \"3\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e4-5\",\n\t\t\t\"source\": \"4\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e5-6\",\n\t\t\t\"source\": \"5\",\n\t\t\t\"target\": \"6\",\n\t\t\t\"animated\": true\n\t\t}\n\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "published endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"flow_name\": \"job description\",\n\t\"version\": 1,\n\t\"input\": {\n\t\t\"{{JD}}\": \"Interstate Gas Supply (IGS Energy) seeks Data Scientist, Enterprise Analytics. Position based in Dublin, OH, but remote work within the U.S. will also be considered.\\n\\nContinuously improve processes and decision-making through data. Using a statistics or mathematics background, the Data Scientist will wrangle with cross-sectional and time series data,\\n\\napply statistical tests to test hypotheses, and bring data science workloads to production through version control, continuous deployment, modular coding and software development best\\n\\npractices. The Data Scientist will develop and scale models in a cloud-based, big data environment (Azure/Databricks/Snowflake) and will use Python/PySpark, SQL languages.\\n\\nSpecifically, job duties include:\\nWork closely with stakeholders, end-users, and business analysts to understand requirements and scope project\\nAnalyze various data to understand relationships, integrity and how data can be leveraged\\nDevelop proof of concept solutions (model development, validation) and work closely with data engineering team to scale solutions, automate quality assurance and monitor accuracy\\nMaintain and develop quality standards for data assets within pipeline\\nProactively partner and field requests from business partners for prospective, in-flight, and future ML pipelines\\n\\nRequires: Master’s degree in Mathematics, Statistics, or Data Science.\\n\\nSalary range is $77,000-$129,000 per year.\\n\\nTo apply, visit https://igsenergy.wd1.myworkdayjobs.com/IGS, or send resume to: Matthew Straley, IGS Energy, 6100 Emerald Parkway, Dublin, OH 43016\\n\\nOur Offer to You:\\nComprehensive healthcare benefits including medical, dental, vision, and employer health savings account contributions\\n401(k) retirement plan with company matching\\nTuition reimbursement, employee wellness programs, and other perks and discounts\\nPaid leave policies\\nAnd more, such as paid time off, flexible spending, employer paid life and disability, employee assistance program, and domestic partner benefits\\n\\nEqual Opportunity Employment:\\n\\nIt is the policy of IGS Energy to ensure equal employment opportunity in accordance with all applicable federal and state regulations and guidelines. Employment discrimination against employees and applicants due to race, color, religion, sex (including sexual harassment), national origin, disability, age, sexual orientation, gender identity, military status, and veteran status or other legally protected class under applicable law is prohibited.\\n\",\n\t\t\"{{RESUME}}\": \"John Smith\\n123 Main Street, City, State ZIP\\n(123) 456-7890\\njohnsmith@email.com \\n\\n Summary: \\nHighly skilled data scientist with 5+ years of experience in analyzing and interpreting complex datasets. Proficient in machine learning algorithms, statistical analysis, and data visualization. Strong problem-solving and communication skills. Committed to leveraging data-driven insights to drive business growth and improve decision-making.\\n Education:\\n Master of Science in Data Science, XYZ University, City, State\\n - Coursework: Machine Learning, Statistical Analysis, Big Data Analytics\\n - GPA: 3.9/4.0\\n\\n Skills:\\n - Programming Languages: Python (NumPy, Pandas, scikit-learn), R, SQL\\n - Machine Learning: Regression, Classification, Clustering, Neural Networks\\n - Data Visualization: Tableau, Matplotlib, Seaborn\\n - Statistical Analysis: Hypothesis Testing, A/B Testing, Time Series Analysis\\n - Big Data Technologies: Hadoop, Spark\\n\\n Experience:\\nData Scientist, ABC Company, City, State\\n- Developed predictive models to optimize marketing campaigns, resulting in a 20% increase in customer acquisition.\\n- Conducted statistical analysis on customer behavior data to identify patterns and make recommendations for product improvements.\\n- Collaborated with cross-functional teams to design and implement data-driven solutions, improving operational efficiency by 15%.\\n\\nData Analyst, DEF Corporation, City, State\\n- Cleaned and transformed large datasets using Python and SQL, reducing data processing time by 30%.\\n- Developed automated reports and dashboards using Tableau, providing real-time insights to senior management.\\n- Assisted in the design and execution of A/B tests, resulting in a 10% increase in conversion rates.\\nProjects:\\n- Predictive Maintenance: Built a machine learning model to predict equipment failures, reducing maintenance costs by 25%.\\n- Customer Segmentation: Conducted clustering analysis on customer data to identify distinct segments and personalize marketing campaigns.\\n- Fraud Detection: Developed an anomaly detection model using unsupervised learning algorithms to identify fraudulent transactions.\\nPublications:\\n- Smith, J., & Johnson, A. (2022). \\\"Predictive Analytics in Retail: A Case Study.\\\" Journal of Data Science, 10(3), 45-58.\\nCertifications:\\n- Certified Data Scientist (CDS), Data Science Association\\nLanguages:\\n- English (Fluent)\\n- Spanish (Intermediate)\\nReferences:\\nAvailable upon request\\n\"\n\t},\n\t\"dag_data\": [{\n\t\t\t\"id\": 1,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 1\",\n\t\t\t\"output_tag\": \"{{JD}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 2,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 2\",\n\t\t\t\"output_tag\": \"{{RESUME}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 3,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 3\",\n\t\t\t\"prompt\": \"Extract the software technical hard skills from the Resume specified by triple backticks and output the result using CSV format. \\n \\n    Job Description: ```{{JD}}``` \\n ``output`` \\nThe output must only contain comma separated values.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_3}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 4,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 4\",\n\t\t\t\"prompt\": \"Enhance the grammer and words used in resume specified by triple backticks and output the result using text format.\\n \\n    Resume: ```{{RESUME}}``` \\n Return the new entire enhanced resume in text format.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_4}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 5,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 5\",\n\t\t\t\"prompt\": \"Update the Resume specified by triple backticks RESUME: ```{{prompt_output_node_4}}``` \\n with the skills: {{prompt_output_node_3}} and return text format\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_5}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 6,\n\t\t\t\"type\": \"output\",\n\t\t\t\"label\": \"Node 6\"\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e1-3\",\n\t\t\t\"source\": \"1\",\n\t\t\t\"target\": \"3\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e2-4\",\n\t\t\t\"source\": \"2\",\n\t\t\t\"target\": \"4\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e3-5\",\n\t\t\t\"source\": \"3\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e4-5\",\n\t\t\t\"source\": \"4\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e5-6\",\n\t\t\t\"source\": \"5\",\n\t\t\t\"target\": \"6\",\n\t\t\t\"animated\": true\n\t\t}\n\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "download",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"flow_name\": \"job description\",\n\t\"version\": 1,\n\t\"input\": {\n\t\t\"{{JD}}\": \"Interstate Gas Supply (IGS Energy) seeks Data Scientist, Enterprise Analytics. Position based in Dublin, OH, but remote work within the U.S. will also be considered.\\n\\nContinuously improve processes and decision-making through data. Using a statistics or mathematics background, the Data Scientist will wrangle with cross-sectional and time series data,\\n\\napply statistical tests to test hypotheses, and bring data science workloads to production through version control, continuous deployment, modular coding and software development best\\n\\npractices. The Data Scientist will develop and scale models in a cloud-based, big data environment (Azure/Databricks/Snowflake) and will use Python/PySpark, SQL languages.\\n\\nSpecifically, job duties include:\\nWork closely with stakeholders, end-users, and business analysts to understand requirements and scope project\\nAnalyze various data to understand relationships, integrity and how data can be leveraged\\nDevelop proof of concept solutions (model development, validation) and work closely with data engineering team to scale solutions, automate quality assurance and monitor accuracy\\nMaintain and develop quality standards for data assets within pipeline\\nProactively partner and field requests from business partners for prospective, in-flight, and future ML pipelines\\n\\nRequires: Master’s degree in Mathematics, Statistics, or Data Science.\\n\\nSalary range is $77,000-$129,000 per year.\\n\\nTo apply, visit https://igsenergy.wd1.myworkdayjobs.com/IGS, or send resume to: Matthew Straley, IGS Energy, 6100 Emerald Parkway, Dublin, OH 43016\\n\\nOur Offer to You:\\nComprehensive healthcare benefits including medical, dental, vision, and employer health savings account contributions\\n401(k) retirement plan with company matching\\nTuition reimbursement, employee wellness programs, and other perks and discounts\\nPaid leave policies\\nAnd more, such as paid time off, flexible spending, employer paid life and disability, employee assistance program, and domestic partner benefits\\n\\nEqual Opportunity Employment:\\n\\nIt is the policy of IGS Energy to ensure equal employment opportunity in accordance with all applicable federal and state regulations and guidelines. Employment discrimination against employees and applicants due to race, color, religion, sex (including sexual harassment), national origin, disability, age, sexual orientation, gender identity, military status, and veteran status or other legally protected class under applicable law is prohibited.\\n\",\n\t\t\"{{RESUME}}\": \"John Smith\\n123 Main Street, City, State ZIP\\n(123) 456-7890\\njohnsmith@email.com \\n\\n Summary: \\nHighly skilled data scientist with 5+ years of experience in analyzing and interpreting complex datasets. Proficient in machine learning algorithms, statistical analysis, and data visualization. Strong problem-solving and communication skills. Committed to leveraging data-driven insights to drive business growth and improve decision-making.\\n Education:\\n Master of Science in Data Science, XYZ University, City, State\\n - Coursework: Machine Learning, Statistical Analysis, Big Data Analytics\\n - GPA: 3.9/4.0\\n\\n Skills:\\n - Programming Languages: Python (NumPy, Pandas, scikit-learn), R, SQL\\n - Machine Learning: Regression, Classification, Clustering, Neural Networks\\n - Data Visualization: Tableau, Matplotlib, Seaborn\\n - Statistical Analysis: Hypothesis Testing, A/B Testing, Time Series Analysis\\n - Big Data Technologies: Hadoop, Spark\\n\\n Experience:\\nData Scientist, ABC Company, City, State\\n- Developed predictive models to optimize marketing campaigns, resulting in a 20% increase in customer acquisition.\\n- Conducted statistical analysis on customer behavior data to identify patterns and make recommendations for product improvements.\\n- Collaborated with cross-functional teams to design and implement data-driven solutions, improving operational efficiency by 15%.\\n\\nData Analyst, DEF Corporation, City, State\\n- Cleaned and transformed large datasets using Python and SQL, reducing data processing time by 30%.\\n- Developed automated reports and dashboards using Tableau, providing real-time insights to senior management.\\n- Assisted in the design and execution of A/B tests, resulting in a 10% increase in conversion rates.\\nProjects:\\n- Predictive Maintenance: Built a machine learning model to predict equipment failures, reducing maintenance costs by 25%.\\n- Customer Segmentation: Conducted clustering analysis on customer data to identify distinct segments and personalize marketing campaigns.\\n- Fraud Detection: Developed an anomaly detection model using unsupervised learning algorithms to identify fraudulent transactions.\\nPublications:\\n- Smith, J., & Johnson, A. (2022). \\\"Predictive Analytics in Retail: A Case Study.\\\" Journal of Data Science, 10(3), 45-58.\\nCertifications:\\n- Certified Data Scientist (CDS), Data Science Association\\nLanguages:\\n- English (Fluent)\\n- Spanish (Intermediate)\\nReferences:\\nAvailable upon request\\n\"\n\t},\n\t\"dag_data\": [{\n\t\t\t\"id\": 1,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 1\",\n\t\t\t\"output_tag\": \"{{JD}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 2,\n\t\t\t\"type\": \"input\",\n\t\t\t\"label\": \"Node 2\",\n\t\t\t\"output_tag\": \"{{RESUME}}\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 3,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 3\",\n\t\t\t\"prompt\": \"Extract the software technical hard skills from the Resume specified by triple backticks and output the result using CSV format. \\n \\n    Job Description: ```{{JD}}``` \\n ``output`` \\nThe output must only contain comma separated values.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_3}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 4,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 4\",\n\t\t\t\"prompt\": \"Enhance the grammer and words used in resume specified by triple backticks and output the result using text format.\\n \\n    Resume: ```{{RESUME}}``` \\n Return the new entire enhanced resume in text format.\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_4}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 5,\n\t\t\t\"type\": \"prompt\",\n\t\t\t\"label\": \"Node 5\",\n\t\t\t\"prompt\": \"Update the Resume specified by triple backticks RESUME: ```{{prompt_output_node_4}}``` \\n with the skills: {{prompt_output_node_3}} and return text format\",\n\t\t\t\"output_tag\": \"{{prompt_output_node_5}}\",\n\t\t\t\"output_format\": \"JSON\"\n\t\t},\n\t\t{\n\t\t\t\"id\": 6,\n\t\t\t\"type\": \"output\",\n\t\t\t\"label\": \"Node 6\"\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e1-3\",\n\t\t\t\"source\": \"1\",\n\t\t\t\"target\": \"3\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e2-4\",\n\t\t\t\"source\": \"2\",\n\t\t\t\"target\": \"4\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e3-5\",\n\t\t\t\"source\": \"3\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e4-5\",\n\t\t\t\"source\": \"4\",\n\t\t\t\"target\": \"5\",\n\t\t\t\"animated\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"e5-6\",\n\t\t\t\"source\": \"5\",\n\t\t\t\"target\": \"6\",\n\t\t\t\"animated\": true\n\t\t}\n\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
