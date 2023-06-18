@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
 import VersionPannel from './components/VersionPannel.vue';
 
   const url = 'http://127.0.0.1:5000'
@@ -16,7 +16,7 @@ import VersionPannel from './components/VersionPannel.vue';
     console.log('save')
     console.log(JSON.stringify(DAGS.value[selectedDAG.value]))
 
-    fetch('/save', {
+    fetch(url+'/save', {
       method: 'POST',
       body: JSON.stringify(DAGS.value[selectedDAG.value]),
       headers: {
@@ -27,8 +27,12 @@ import VersionPannel from './components/VersionPannel.vue';
   .catch(error => console.error(error));        
   }
   
-  const onDownload = () => {
-    console.log('download')
+ 
+  const onRun = ()=>{
+    modal_input_text.value = Array(DAGS.value[selectedDAG.value].inputPanels.length).fill('')
+    showModal.value=true
+    run_output_text.value = ''
+    run_complete.value = false
   }
 
   const onRunModal = () => {
@@ -39,7 +43,7 @@ import VersionPannel from './components/VersionPannel.vue';
       'input_text':modal_input_text.value,
     }
     console.log(JSON.stringify(run_data))
-    fetch('/run', {
+    fetch(url+'/run', {
       method: 'POST',
       body: JSON.stringify(run_data),
       headers: {
@@ -49,20 +53,45 @@ import VersionPannel from './components/VersionPannel.vue';
   .then(response => response.json())
   .catch(error => console.error(error));        
   }
-  
-  
 
-  const onUpload = () => {
-    console.log('upload')
+  const onPublish = () => {
+    console.log('Publish')
+    fetch(url+'/publish', {
+      method: 'POST',
+      body: JSON.stringify(DAGS.value[selectedDAG.value]),
+      headers: {
+      'Content-Type': 'application/json'
+      }
+  })
+  .then(response => response.json())
+  .catch(error => console.error(error));        
   }
 
+  onMounted(async () => {
+    const response = await fetch(url+'/load')
+    const data = await response.json()
+    console.log("Data Received", data)
+    DAGS.value = data
+  })
 
-  const onRun = ()=>{
-    modal_input_text.value = Array(DAGS.value[selectedDAG.value].inputPanels.length).fill('')
-    showModal.value=true
-    run_output_text.value = ''
-    run_complete.value = false
+  const onDownload = () => {
+    console.log('download')
+    console.log('save')
+    console.log(JSON.stringify(DAGS.value[selectedDAG.value]))
+
+    fetch(url+'/save', {
+      method: 'POST',
+      body: JSON.stringify(DAGS.value[selectedDAG.value]),
+      headers: {
+      'Content-Type': 'application/json'
+      }
+  })
+  .then(response => response.json())
+  .catch(error => console.error(error));        
+
+
   }
+
 
 
 
@@ -80,13 +109,13 @@ import VersionPannel from './components/VersionPannel.vue';
             <font-awesome-icon class="icon-top-bar" :icon="['fas', 'floppy-disk']" size="lg" @click="onSave"/>
           </div>
           <div class="col-md-3">
-            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'download']" size="lg" />
+            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'download']" size="lg" @click="onDownload"/>
           </div>
           <div class="col-md-3">
             <font-awesome-icon class="icon-top-bar" :icon="['fas', 'play']" size="lg"  @click="onRun"/>
           </div>
           <div class="col-md-3">
-            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'upload']" size="lg" />
+            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'upload']" size="lg" @click="onPublish"/>
           </div>
         </div>
       </div>
