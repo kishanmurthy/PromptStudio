@@ -136,16 +136,16 @@ import VersionPannel from './components/VersionPannel.vue';
       <div class="col-md-2">
         <div class="row">
           <div class="col-md-3">
-            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'floppy-disk']" size="lg" @click="onSave"/>
+            <font-awesome-icon title="Save Flow" class="icon-top-bar" :icon="['fas', 'floppy-disk']" size="lg" @click="onSave"/>
           </div>
           <div class="col-md-3">
-            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'download']" size="lg" @click="onDownload"/>
+            <font-awesome-icon title="Download Code" class="icon-top-bar" :icon="['fas', 'download']" size="lg" @click="onDownload"/>
           </div>
           <div class="col-md-3">
-            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'play']" size="lg"  @click="onRun"/>
+            <font-awesome-icon title="Run Flow" class="icon-top-bar" :icon="['fas', 'play']" size="lg"  @click="onRun"/>
           </div>
           <div class="col-md-3">
-            <font-awesome-icon class="icon-top-bar" :icon="['fas', 'upload']" size="lg" @click="onPublish"/>
+            <font-awesome-icon title="Publish Flow" class="icon-top-bar" :icon="['fas', 'upload']" size="lg" @click="onPublish"/>
           </div>
         </div>
       </div>
