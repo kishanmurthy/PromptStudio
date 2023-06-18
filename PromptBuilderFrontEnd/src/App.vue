@@ -203,9 +203,12 @@ import VersionPannel from './components/VersionPannel.vue';
 
     <div v-if="showModalNotification" class="modal">
       <div class="modal-content">
-        <span class="close" @click="()=>{showModalNotification=false}">&times;</span>
-        <label>{{ modal_content }}</label>
-      </div>
+        <div style="display:inline-flex">
+          <h3 class="col-md-11">Status</h3>
+          <span class="close col-md-1" @click="()=>{showModalNotification=false}">&times;</span>
+        </div>
+        <label style="margin-top:15px;">{{ modal_content }}</label>
+        </div>
     </div>
   </div>
 
@@ -230,6 +233,7 @@ import VersionPannel from './components/VersionPannel.vue';
   padding: 20px;
   border: 1px solid #888;
   width: min-content;
+  min-width: 200px;
   max-height: 500px;
   overflow-y: scroll;
 }
