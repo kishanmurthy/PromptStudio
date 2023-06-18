@@ -8,6 +8,7 @@ import VersionPannel from './components/VersionPannel.vue';
 
   const showModal = ref(false)
   const modal_input_text = ref('')
+  const modal_output_text = ref('')
   const run_output_text = ref('')
   var run_complete = ref('false')
 
@@ -43,7 +44,7 @@ import VersionPannel from './components/VersionPannel.vue';
       'input_text':modal_input_text.value,
     }
     console.log(JSON.stringify(run_data))
-    fetch(url+'/run', {
+    fetch(url+'/test', {
       method: 'POST',
       body: JSON.stringify(run_data),
       headers: {
@@ -51,6 +52,11 @@ import VersionPannel from './components/VersionPannel.vue';
       }
   })
   .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    modal_output_text.value = data
+    run_complete.value = true
+  })
   .catch(error => console.error(error));        
   }
 
@@ -145,13 +151,19 @@ import VersionPannel from './components/VersionPannel.vue';
             <div>
               <button @click="onRunModal">Run</button>
             </div>
-            <template v-if="run_complete">
+            <template v-if="run_complete" >
+              <div>
+                Output
+              </div>
+              <!-- <div v-for="(value, name, index) in object"> -->
+              <template v-for="(value,key,index)  in modal_output_text" :key=index>
               <div class="col-md-1">
-                <label>Output</label>
-              </div>
-              <div class="col-md-11">
-                <textarea v-model="run_output_text"></textarea>
-              </div>
+                  <label>{{ key }}</label>
+                </div>
+                <div class="col-md-11">
+                  <textarea>{{ value.trim() }}</textarea>
+                </div>
+              </template>
             </template>
         </div>
 
