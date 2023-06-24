@@ -1,5 +1,10 @@
 # Prompt Studio
 
+
+![gallery](https://github.com/kishanmurthy/PromptStudio/assets/25534697/95908da9-fa4f-4f49-92ec-e47cd3da8352)
+
+
+
 ## Inspiration
 A lot of existing businesses use LLM to make their systems better. But there does not exist an easy way for version controlling prompt engineering. Prompt Studio helps in bridging the gap and making it easy to do prompt engineering
 
