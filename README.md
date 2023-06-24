@@ -1,7 +1,6 @@
 # Prompt Studio
 
-
-![gallery](https://github.com/kishanmurthy/PromptStudio/assets/25534697/95908da9-fa4f-4f49-92ec-e47cd3da8352)
+![gallery](https://github.com/kishanmurthy/PromptStudio/assets/25534697/3bc01c93-b6c3-4eb3-ab4a-7fb85b9e3100)
 
 
 
